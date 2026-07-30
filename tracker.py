@@ -1,0 +1,556 @@
+import csv
+import json
+import os
+import sys
+from datetime import datetime
+from pathlib import Path
+from zoneinfo import ZoneInfo
+
+import requests
+
+
+MAGIC_EDEN_BASE = "https://api-mainnet.magiceden.dev/v2"
+COINGECKO_URL = "https://api.coingecko.com/api/v3/simple/price"
+
+COLLECTIONS = [
+    {
+        "name": "A Letter from the Universe",
+        "symbol": "tomorrowland_winter",
+    },
+    {
+        "name": "The Reflection of Love",
+        "symbol": "the_reflection_of_love",
+    },
+    {
+        "name": "The Symbol of Love and Unity",
+        "symbol": "tomorrowland_love_unity",
+    },
+]
+
+PARIS = ZoneInfo("Europe/Paris")
+TIMEOUT = 30
+
+DATA_DIR = Path("data")
+REPORT_DIR = Path("reports")
+HISTORY_FILE = DATA_DIR / "history.csv"
+
+MAGIC_EDEN_API_KEY = os.environ.get("MAGIC_EDEN_API_KEY", "").strip()
+COINGECKO_API_KEY = os.environ.get("COINGECKO_API_KEY", "").strip()
+
+
+class OfficialDataUnavailable(Exception):
+    pass
+
+
+def headers_magic_eden():
+    headers = {
+        "accept": "application/json",
+        "user-agent": "Tomorrowland-Medallion-Tracker/1.0",
+    }
+
+    if MAGIC_EDEN_API_KEY:
+        headers["Authorization"] = f"Bearer {MAGIC_EDEN_API_KEY}"
+
+    return headers
+
+
+def get_json(url, params=None, headers=None):
+    try:
+        response = requests.get(
+            url,
+            params=params,
+            headers=headers,
+            timeout=TIMEOUT,
+        )
+    except requests.RequestException as exc:
+        raise OfficialDataUnavailable(
+            f"Erreur réseau pour {url}: {exc}"
+        ) from exc
+
+    if response.status_code != 200:
+        raise OfficialDataUnavailable(
+            f"HTTP {response.status_code} pour {response.url}"
+        )
+
+    try:
+        return response.json()
+    except ValueError as exc:
+        raise OfficialDataUnavailable(
+            f"Réponse non JSON pour {response.url}"
+        ) from exc
+
+
+def extract_items(payload):
+    if isinstance(payload, list):
+        return payload
+
+    if isinstance(payload, dict):
+        for key in ("results", "items", "data", "pools"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return value
+
+    return []
+
+
+def get_cheapest_listing(symbol):
+    url = f"{MAGIC_EDEN_BASE}/collections/{symbol}/listings"
+
+    payload = get_json(
+        url,
+        params={
+            "offset": 0,
+            "limit": 20,
+            "sort": "listPrice",
+            "sort_direction": "asc",
+            "listingAggMode": "false",
+        },
+        headers=headers_magic_eden(),
+    )
+
+    listings = extract_items(payload)
+
+    valid = []
+    for listing in listings:
+        price = listing.get("price", listing.get("listPrice"))
+
+        if isinstance(price, (int, float)) and price > 0:
+            valid.append((float(price), listing))
+
+    if not valid:
+        raise OfficialDataUnavailable(
+            f"Aucun listing actif vérifiable pour {symbol}"
+        )
+
+    valid.sort(key=lambda value: value[0])
+    return valid[0]
+
+
+def find_adjusted_price(pool):
+    possible_keys = (
+        "buysideAdjustedPrice",
+        "buyside_adjusted_price",
+        "buySideAdjustedPrice",
+    )
+
+    for key in possible_keys:
+        value = pool.get(key)
+
+        if isinstance(value, (int, float)):
+            return float(value)
+
+    return None
+
+
+def pool_is_executable(pool):
+    disabled_values = (
+        pool.get("disabled"),
+        pool.get("isDisabled"),
+        pool.get("expired"),
+    )
+
+    if any(value is True for value in disabled_values):
+        return False
+
+    quantity_keys = (
+        "buysideAssetAmount",
+        "buySideAssetAmount",
+        "buyOrdersQuantity",
+    )
+
+    quantities = [
+        pool.get(key)
+        for key in quantity_keys
+        if isinstance(pool.get(key), (int, float))
+    ]
+
+    if quantities and max(quantities) <= 0:
+        return False
+
+    return True
+
+
+def get_best_offer(symbol):
+    url = f"{MAGIC_EDEN_BASE}/mmm/pools"
+
+    payload = get_json(
+        url,
+        params={
+            "collectionSymbol": symbol,
+            "offset": 0,
+            "limit": 100,
+            "field": 5,
+            "direction": 1,
+        },
+        headers=headers_magic_eden(),
+    )
+
+    pools = extract_items(payload)
+
+    offers = []
+
+    for pool in pools:
+        adjusted_price = find_adjusted_price(pool)
+
+        if (
+            adjusted_price is not None
+            and adjusted_price > 0
+            and pool_is_executable(pool)
+        ):
+            offers.append((adjusted_price, pool))
+
+    if not offers:
+        return 0.0, None
+
+    offers.sort(key=lambda value: value[0], reverse=True)
+    return offers[0]
+
+
+def get_sol_eur():
+    headers = {
+        "accept": "application/json",
+        "user-agent": "Tomorrowland-Medallion-Tracker/1.0",
+    }
+
+    if COINGECKO_API_KEY:
+        headers["x-cg-demo-api-key"] = COINGECKO_API_KEY
+
+    payload = get_json(
+        COINGECKO_URL,
+        params={
+            "ids": "solana",
+            "vs_currencies": "eur",
+            "include_last_updated_at": "true",
+        },
+        headers=headers,
+    )
+
+    solana = payload.get("solana", {})
+    price = solana.get("eur")
+    updated_at = solana.get("last_updated_at")
+
+    if not isinstance(price, (int, float)) or price <= 0:
+        raise OfficialDataUnavailable(
+            "Cours SOL/EUR CoinGecko indisponible"
+        )
+
+    return float(price), updated_at
+
+
+def money_eur(value):
+    return (
+        f"{value:,.2f}"
+        .replace(",", " ")
+        .replace(".", ",")
+        + " €"
+    )
+
+
+def number_sol(value):
+    return f"{value:.4f} SOL".replace(".", ",")
+
+
+def percentage(value):
+    return f"{value:.2f} %".replace(".", ",")
+
+
+def load_previous():
+    if not HISTORY_FILE.exists():
+        return {}
+
+    with HISTORY_FILE.open(
+        "r",
+        encoding="utf-8",
+        newline="",
+    ) as file:
+        rows = list(csv.DictReader(file))
+
+    if not rows:
+        return {}
+
+    latest_timestamp = rows[-1]["timestamp"]
+
+    return {
+        row["symbol"]: row
+        for row in rows
+        if row["timestamp"] == latest_timestamp
+    }
+
+
+def save_history(timestamp, rows):
+    DATA_DIR.mkdir(exist_ok=True)
+
+    exists = HISTORY_FILE.exists()
+
+    fields = [
+        "timestamp",
+        "symbol",
+        "name",
+        "buy_sol",
+        "sell_sol",
+        "sol_eur",
+        "buy_eur",
+        "sell_eur",
+    ]
+
+    with HISTORY_FILE.open(
+        "a",
+        encoding="utf-8",
+        newline="",
+    ) as file:
+        writer = csv.DictWriter(file, fieldnames=fields)
+
+        if not exists:
+            writer.writeheader()
+
+        for row in rows:
+            writer.writerow({
+                key: row[key]
+                for key in fields
+            })
+
+
+def calculate_variation(current, previous):
+    if previous is None:
+        return None
+
+    old = float(previous)
+
+    if old == 0:
+        return None
+
+    return ((current - old) / old) * 100
+
+
+def main():
+    now = datetime.now(PARIS)
+    timestamp = now.isoformat(timespec="seconds")
+
+    previous = load_previous()
+
+    try:
+        sol_eur, sol_updated_at = get_sol_eur()
+
+        results = []
+
+        for collection in COLLECTIONS:
+            symbol = collection["symbol"]
+
+            buy_sol, listing = get_cheapest_listing(symbol)
+            sell_sol, pool = get_best_offer(symbol)
+
+            buy_eur = buy_sol * sol_eur
+            sell_eur = sell_sol * sol_eur
+            spread_sol = sell_sol - buy_sol
+            spread_eur = sell_eur - buy_eur
+            spread_pct = (
+                (spread_sol / buy_sol) * 100
+                if buy_sol > 0
+                else None
+            )
+
+            old = previous.get(symbol)
+
+            results.append({
+                "timestamp": timestamp,
+                "symbol": symbol,
+                "name": collection["name"],
+                "buy_sol": buy_sol,
+                "sell_sol": sell_sol,
+                "sol_eur": sol_eur,
+                "buy_eur": buy_eur,
+                "sell_eur": sell_eur,
+                "spread_sol": spread_sol,
+                "spread_eur": spread_eur,
+                "spread_pct": spread_pct,
+                "buy_change_24h": calculate_variation(
+                    buy_sol,
+                    old["buy_sol"] if old else None,
+                ),
+                "sell_change_24h": calculate_variation(
+                    sell_sol,
+                    old["sell_sol"] if old else None,
+                ),
+                "listing": listing,
+                "pool": pool,
+            })
+
+    except OfficialDataUnavailable as exc:
+        REPORT_DIR.mkdir(exist_ok=True)
+
+        report = (
+            f"# Relevé Tomorrowland\n\n"
+            f"Date : {now.strftime('%d/%m/%Y à %H:%M:%S')} "
+            f"Europe/Paris\n\n"
+            f"## Relevé non fiable\n\n"
+            f"**Relevé impossible — donnée officielle inaccessible.**\n\n"
+            f"Détail technique : `{exc}`\n"
+        )
+
+        report_path = REPORT_DIR / "latest.md"
+        report_path.write_text(report, encoding="utf-8")
+
+        print(report)
+        sys.exit(1)
+
+    total_buy_sol = sum(row["buy_sol"] for row in results)
+    total_sell_sol = sum(row["sell_sol"] for row in results)
+
+    total_buy_eur = total_buy_sol * sol_eur
+    total_sell_eur = total_sell_sol * sol_eur
+
+    total_spread_sol = total_sell_sol - total_buy_sol
+    total_spread_eur = total_sell_eur - total_buy_eur
+
+    total_spread_pct = (
+        total_spread_sol / total_buy_sol * 100
+        if total_buy_sol > 0
+        else None
+    )
+
+    lines = [
+        "# Relevé Tomorrowland — Medallion of Memoria",
+        "",
+        (
+            f"Date : **{now.strftime('%d/%m/%Y à %H:%M:%S')} "
+            f"Europe/Paris**"
+        ),
+        "",
+        (
+            f"Cours SOL/EUR : **{money_eur(sol_eur)}** — "
+            f"source : CoinGecko"
+        ),
+        "",
+    ]
+
+    for row in results:
+        buy_share = (
+            row["buy_sol"] / total_buy_sol * 100
+            if total_buy_sol > 0
+            else 0
+        )
+
+        sell_share = (
+            row["sell_sol"] / total_sell_sol * 100
+            if total_sell_sol > 0
+            else 0
+        )
+
+        lines.extend([
+            f"## {row['name']}",
+            "",
+            (
+                f"- Achat immédiat : **{number_sol(row['buy_sol'])}** "
+                f"/ **{money_eur(row['buy_eur'])}**"
+            ),
+            (
+                f"- Revente immédiate : "
+                f"**{number_sol(row['sell_sol'])}** "
+                f"/ **{money_eur(row['sell_eur'])}**"
+                if row["sell_sol"] > 0
+                else
+                "- Revente immédiate : **0,00 SOL / 0,00 €** "
+                "— aucune offre exécutable"
+            ),
+            (
+                f"- Spread : **{number_sol(row['spread_sol'])}** "
+                f"/ **{money_eur(row['spread_eur'])}** "
+                f"/ **{percentage(row['spread_pct'])}**"
+            ),
+            (
+                f"- Quote-part achat : **{percentage(buy_share)}**"
+            ),
+            (
+                f"- Quote-part revente : **{percentage(sell_share)}**"
+            ),
+        ])
+
+        if row["buy_change_24h"] is not None:
+            lines.append(
+                f"- Variation achat : "
+                f"**{percentage(row['buy_change_24h'])}**"
+            )
+
+        if row["sell_change_24h"] is not None:
+            lines.append(
+                f"- Variation revente : "
+                f"**{percentage(row['sell_change_24h'])}**"
+            )
+
+        lines.append("")
+
+    lines.extend([
+        "## Medallion complet",
+        "",
+        (
+            f"- Coût total d’achat : "
+            f"**{number_sol(total_buy_sol)}** "
+            f"/ **{money_eur(total_buy_eur)}**"
+        ),
+        (
+            f"- Valeur totale de revente : "
+            f"**{number_sol(total_sell_sol)}** "
+            f"/ **{money_eur(total_sell_eur)}**"
+        ),
+        (
+            f"- Spread total : "
+            f"**{number_sol(total_spread_sol)}** "
+            f"/ **{money_eur(total_spread_eur)}** "
+            f"/ **{percentage(total_spread_pct)}**"
+        ),
+        "",
+    ])
+
+    if total_sell_sol == 0:
+        conclusion = (
+            "Liquidité acheteuse inexistante : attendre avant d’acheter, "
+            "sauf objectif d’usage personnel du Medallion."
+        )
+    elif total_spread_pct <= -25:
+        conclusion = (
+            "Spread important et liquidité limitée : attendre ou placer "
+            "des offres plutôt que d’acheter immédiatement."
+        )
+    elif total_spread_pct <= -10:
+        conclusion = (
+            "Liquidité présente mais spread significatif : achat immédiat "
+            "à envisager seulement sur un prix particulièrement attractif."
+        )
+    else:
+        conclusion = (
+            "Liquidité relativement correcte au moment du relevé, "
+            "mais vérifier la profondeur des offres avant tout achat."
+        )
+
+    lines.extend([
+        "## Conclusion",
+        "",
+        conclusion,
+        "",
+    ])
+
+    report = "\n".join(lines)
+
+    REPORT_DIR.mkdir(exist_ok=True)
+
+    (REPORT_DIR / "latest.md").write_text(
+        report,
+        encoding="utf-8",
+    )
+
+    dated_path = REPORT_DIR / f"{now.strftime('%Y-%m-%d')}.md"
+    dated_path.write_text(report, encoding="utf-8")
+
+    raw_path = REPORT_DIR / f"{now.strftime('%Y-%m-%d')}.json"
+    raw_path.write_text(
+        json.dumps(results, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    save_history(timestamp, results)
+
+    print(report)
+
+
+if __name__ == "__main__":
+    main()
