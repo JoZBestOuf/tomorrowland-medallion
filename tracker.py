@@ -10,7 +10,7 @@ import requests
 
 
 MAGIC_EDEN_BASE = "https://api-mainnet.magiceden.dev/v2"
-COINGECKO_URL = "https://api.coingecko.com/api/v3/simple/price"
+KRAKEN_URL = "https://api.kraken.com/0/public/Ticker"
 
 COLLECTIONS = [
     {
@@ -35,7 +35,6 @@ REPORT_DIR = Path("reports")
 HISTORY_FILE = DATA_DIR / "history.csv"
 
 MAGIC_EDEN_API_KEY = os.environ.get("MAGIC_EDEN_API_KEY", "").strip()
-COINGECKO_API_KEY = os.environ.get("COINGECKO_API_KEY", "").strip()
 
 
 class OfficialDataUnavailable(Exception):
@@ -207,34 +206,60 @@ def get_best_offer(symbol):
 
 
 def get_sol_eur():
-    headers = {
-        "accept": "application/json",
-        "user-agent": "Tomorrowland-Medallion-Tracker/1.0",
-    }
-
-    if COINGECKO_API_KEY:
-        headers["x-cg-demo-api-key"] = COINGECKO_API_KEY
-
     payload = get_json(
-        COINGECKO_URL,
-        params={
-            "ids": "solana",
-            "vs_currencies": "eur",
-            "include_last_updated_at": "true",
+        KRAKEN_URL,
+        params={"pair": "SOLEUR"},
+        headers={
+            "accept": "application/json",
+            "user-agent": "Tomorrowland-Medallion-Tracker/1.0",
         },
-        headers=headers,
     )
 
-    solana = payload.get("solana", {})
-    price = solana.get("eur")
-    updated_at = solana.get("last_updated_at")
+    errors = payload.get("error", [])
 
-    if not isinstance(price, (int, float)) or price <= 0:
+    if errors:
         raise OfficialDataUnavailable(
-            "Cours SOL/EUR CoinGecko indisponible"
+            f"Erreur Kraken : {errors}"
         )
 
-    return float(price), updated_at
+    result = payload.get("result", {})
+
+    if not isinstance(result, dict) or not result:
+        raise OfficialDataUnavailable(
+            "Cours SOL/EUR Kraken indisponible"
+        )
+
+    ticker = next(iter(result.values()), None)
+
+    if not isinstance(ticker, dict):
+        raise OfficialDataUnavailable(
+            "Réponse Kraken inexploitable"
+        )
+
+    # c[0] = prix de la dernière transaction
+    last_trade = ticker.get("c")
+
+    if (
+        not isinstance(last_trade, list)
+        or not last_trade
+    ):
+        raise OfficialDataUnavailable(
+            "Dernier cours SOL/EUR Kraken absent"
+        )
+
+    try:
+        price = float(last_trade[0])
+    except (TypeError, ValueError) as exc:
+        raise OfficialDataUnavailable(
+            "Cours SOL/EUR Kraken invalide"
+        ) from exc
+
+    if price <= 0:
+        raise OfficialDataUnavailable(
+            "Cours SOL/EUR Kraken nul ou négatif"
+        )
+
+    return price, int(datetime.now(PARIS).timestamp())
 
 
 def money_eur(value):
@@ -418,7 +443,7 @@ def main():
         "",
         (
             f"Cours SOL/EUR : **{money_eur(sol_eur)}** — "
-            f"source : CoinGecko"
+            f"source : Kraken — dernière transaction SOLEUR"
         ),
         "",
     ]
