@@ -29,7 +29,6 @@ jobs:
       - name: Effectuer le relevé
         env:
           MAGIC_EDEN_API_KEY: ${{ secrets.MAGIC_EDEN_API_KEY }}
-          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: python tracker.py
 
       - name: Enregistrer le relevé
