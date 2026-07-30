@@ -2,6 +2,7 @@ import csv
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -53,30 +54,71 @@ def headers_magic_eden():
     return headers
 
 
-def get_json(url, params=None, headers=None):
-    try:
-        response = requests.get(
-            url,
-            params=params,
-            headers=headers,
-            timeout=TIMEOUT,
-        )
-    except requests.RequestException as exc:
-        raise OfficialDataUnavailable(
-            f"Erreur réseau pour {url}: {exc}"
-        ) from exc
+def get_json(url, params=None, headers=None, max_attempts=5):
+    retryable_statuses = {429, 500, 502, 503, 504}
+    last_error = None
 
-    if response.status_code != 200:
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = requests.get(
+                url,
+                params=params,
+                headers=headers,
+                timeout=TIMEOUT,
+            )
+        except requests.RequestException as exc:
+            last_error = f"Erreur réseau pour {url}: {exc}"
+
+            if attempt < max_attempts:
+                wait_seconds = min(2 ** attempt, 30)
+
+                print(
+                    f"[HTTP] tentative {attempt}/{max_attempts} échouée ; "
+                    f"nouvelle tentative dans {wait_seconds}s"
+                )
+
+                time.sleep(wait_seconds)
+                continue
+
+            raise OfficialDataUnavailable(last_error) from exc
+
+        if response.status_code == 200:
+            try:
+                return response.json()
+            except ValueError as exc:
+                raise OfficialDataUnavailable(
+                    f"Réponse non JSON pour {response.url}"
+                ) from exc
+
+        if response.status_code in retryable_statuses:
+            last_error = (
+                f"HTTP {response.status_code} pour {response.url}"
+            )
+
+            if attempt < max_attempts:
+                retry_after = response.headers.get("Retry-After")
+
+                try:
+                    wait_seconds = int(retry_after)
+                except (TypeError, ValueError):
+                    wait_seconds = min(2 ** attempt, 30)
+
+                print(
+                    f"[HTTP] {response.status_code} sur {response.url} ; "
+                    f"tentative {attempt}/{max_attempts}, "
+                    f"nouvel essai dans {wait_seconds}s"
+                )
+
+                time.sleep(wait_seconds)
+                continue
+
         raise OfficialDataUnavailable(
             f"HTTP {response.status_code} pour {response.url}"
         )
 
-    try:
-        return response.json()
-    except ValueError as exc:
-        raise OfficialDataUnavailable(
-            f"Réponse non JSON pour {response.url}"
-        ) from exc
+    raise OfficialDataUnavailable(
+        last_error or f"Donnée inaccessible pour {url}"
+    )
 
 
 def extract_items(payload):
@@ -491,6 +533,8 @@ def main():
 
             buy_sol, listing = get_cheapest_listing(symbol)
             sell_sol, pool = get_best_offer(symbol)
+
+            time.sleep(0.5)
 
             buy_eur = buy_sol * sol_eur
             sell_eur = sell_sol * sol_eur
