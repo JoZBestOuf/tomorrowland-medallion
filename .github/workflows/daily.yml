@@ -1,0 +1,42 @@
+name: Relevé quotidien Tomorrowland
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "30 8 * * *"
+      timezone: "Europe/Paris"
+
+permissions:
+  contents: write
+
+jobs:
+  tomorrowland-tracker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Effectuer le relevé
+        env:
+          MAGIC_EDEN_API_KEY: ${{ secrets.MAGIC_EDEN_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+        run: python tracker.py
+
+      - name: Enregistrer le relevé
+        if: always()
+        run: |
+          git config user.name "Tomorrowland Tracker"
+          git config user.email "actions@users.noreply.github.com"
+          git add data reports
+          git diff --cached --quiet || git commit -m "Relevé automatique $(date +'%Y-%m-%d')"
+          git push
