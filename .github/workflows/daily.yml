@@ -37,6 +37,18 @@ jobs:
         run: |
           git config user.name "Tomorrowland Tracker"
           git config user.email "actions@users.noreply.github.com"
-          git add data reports
-          git diff --cached --quiet || git commit -m "Relevé automatique $(date +'%Y-%m-%d')"
-          git push
+
+          if [ -d "data" ]; then
+            git add data
+          fi
+
+          if [ -d "reports" ]; then
+            git add reports
+          fi
+
+          if git diff --cached --quiet; then
+            echo "Aucun nouveau fichier à enregistrer."
+          else
+            git commit -m "Relevé automatique $(date +'%Y-%m-%d')"
+            git push
+          fi
