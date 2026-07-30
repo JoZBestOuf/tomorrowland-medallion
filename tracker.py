@@ -184,12 +184,37 @@ def get_best_offer(symbol):
         headers=headers_magic_eden(),
     )
 
+    # Sauvegarde de diagnostic de la réponse officielle Magic Eden
+    REPORT_DIR.mkdir(exist_ok=True)
+
+    diagnostic_path = REPORT_DIR / f"mmm_{symbol}.json"
+    diagnostic_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
     pools = extract_items(payload)
+
+    print(
+        f"[MMM] {symbol} : "
+        f"{len(pools)} pool(s) retourné(s)"
+    )
+
+    if pools:
+        print(
+            f"[MMM] Champs du premier pool : "
+            f"{sorted(pools[0].keys())}"
+        )
 
     offers = []
 
     for pool in pools:
         adjusted_price = find_adjusted_price(pool)
+
+        print(
+            f"[MMM] pool={pool.get('pool', pool.get('address', 'inconnu'))} "
+            f"prix_ajuste={adjusted_price}"
+        )
 
         if (
             adjusted_price is not None
@@ -198,8 +223,13 @@ def get_best_offer(symbol):
         ):
             offers.append((adjusted_price, pool))
 
-    if not offers:
+    if not pools:
         return 0.0, None
+
+    if not offers:
+        raise OfficialDataUnavailable(
+            f"Pools MMM présents mais prix ajusté non interprétable pour {symbol}"
+        )
 
     offers.sort(key=lambda value: value[0], reverse=True)
     return offers[0]
