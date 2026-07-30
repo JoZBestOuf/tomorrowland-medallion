@@ -125,45 +125,125 @@ def get_cheapest_listing(symbol):
     return valid[0]
 
 
+def to_number(value, default=0.0):
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def lamports_to_sol(value):
+    """
+    Les champs financiers MMM sont normalement retournés en lamports.
+    Une valeur déjà exprimée en SOL est conservée par sécurité.
+    """
+    amount = to_number(value)
+
+    if amount <= 0:
+        return 0.0
+
+    # Les prix de ces collections dépassent plusieurs SOL :
+    # une valeur supérieure à 1 000 000 est nécessairement en lamports.
+    if amount > 1_000_000:
+        return amount / 1_000_000_000
+
+    return amount
+
+
 def find_adjusted_price(pool):
-    possible_keys = (
-        "buysideAdjustedPrice",
-        "buyside_adjusted_price",
-        "buySideAdjustedPrice",
+    """
+    Calcule le BUYSIDE_ADJUSTED_PRICE réellement reçu par le vendeur :
+
+    spotPrice - royalties - LP fee éventuel.
+
+    Les royalties réellement appliquées correspondent à :
+    part de royalties acceptée par le pool
+    × royalties totales de la collection.
+    """
+
+    spot_price_sol = lamports_to_sol(pool.get("spotPrice"))
+
+    if spot_price_sol <= 0:
+        return None
+
+    royalty_share_bp = to_number(
+        pool.get("buysideCreatorRoyaltyBp")
     )
 
-    for key in possible_keys:
-        value = pool.get(key)
+    collection_royalty_bp = to_number(
+        pool.get("collectionSellerFeeBasisPoints")
+    )
 
-        if isinstance(value, (int, float)):
-            return float(value)
+    lp_fee_bp = to_number(pool.get("lpFeeBp"))
 
-    return None
+    payment_amount_sol = lamports_to_sol(
+        pool.get("buysidePaymentAmount")
+    )
+
+    sellside_asset_amount = to_number(
+        pool.get("sellsideAssetAmount")
+    )
+
+    # Magic Eden : un pool est considéré comme two-sided lorsque
+    # le dépôt SOL dépasse le spot price et qu'il contient plus d'un NFT.
+    is_two_sided = (
+        payment_amount_sol > spot_price_sol
+        and sellside_asset_amount > 1
+    )
+
+    royalty_rate = (
+        royalty_share_bp / 10_000
+    ) * (
+        collection_royalty_bp / 10_000
+    )
+
+    lp_fee_rate = (
+        lp_fee_bp / 10_000
+        if is_two_sided
+        else 0.0
+    )
+
+    adjusted_price_sol = spot_price_sol * (
+        1 - royalty_rate - lp_fee_rate
+    )
+
+    if adjusted_price_sol <= 0:
+        return None
+
+    return adjusted_price_sol
 
 
 def pool_is_executable(pool):
-    disabled_values = (
-        pool.get("disabled"),
-        pool.get("isDisabled"),
-        pool.get("expired"),
-    )
+    now_timestamp = int(datetime.now(PARIS).timestamp())
 
-    if any(value is True for value in disabled_values):
+    # Vérification de l'expiration
+    expiry = int(to_number(pool.get("expiry")))
+
+    if expiry > 0 and expiry <= now_timestamp:
         return False
 
-    quantity_keys = (
-        "buysideAssetAmount",
-        "buySideAssetAmount",
-        "buyOrdersQuantity",
+    # Magic Eden calcule directement le nombre d'ordres
+    # que le pool peut encore exécuter.
+    buy_orders_amount = to_number(
+        pool.get("buyOrdersAmount")
     )
 
-    quantities = [
-        pool.get(key)
-        for key in quantity_keys
-        if isinstance(pool.get(key), (int, float))
-    ]
+    if buy_orders_amount <= 0:
+        return False
 
-    if quantities and max(quantities) <= 0:
+    spot_price_sol = lamports_to_sol(
+        pool.get("spotPrice")
+    )
+
+    payment_amount_sol = lamports_to_sol(
+        pool.get("buysidePaymentAmount")
+    )
+
+    if spot_price_sol <= 0:
+        return False
+
+    # Un solde acheteur positif doit être disponible.
+    if payment_amount_sol <= 0:
         return False
 
     return True
@@ -184,7 +264,6 @@ def get_best_offer(symbol):
         headers=headers_magic_eden(),
     )
 
-    # Sauvegarde de diagnostic de la réponse officielle Magic Eden
     REPORT_DIR.mkdir(exist_ok=True)
 
     diagnostic_path = REPORT_DIR / f"mmm_{symbol}.json"
@@ -200,39 +279,48 @@ def get_best_offer(symbol):
         f"{len(pools)} pool(s) retourné(s)"
     )
 
-    if pools:
+    if not pools:
         print(
-            f"[MMM] Champs du premier pool : "
-            f"{sorted(pools[0].keys())}"
+            f"[MMM] {symbol} : "
+            "aucun pool retourné par Magic Eden"
         )
+        return 0.0, None
 
     offers = []
 
     for pool in pools:
+        if not pool_is_executable(pool):
+            continue
+
         adjusted_price = find_adjusted_price(pool)
 
-        print(
-            f"[MMM] pool={pool.get('pool', pool.get('address', 'inconnu'))} "
-            f"prix_ajuste={adjusted_price}"
-        )
+        if adjusted_price is None:
+            continue
 
-        if (
-            adjusted_price is not None
-            and adjusted_price > 0
-            and pool_is_executable(pool)
-        ):
-            offers.append((adjusted_price, pool))
-
-    if not pools:
-        return 0.0, None
+        offers.append((adjusted_price, pool))
 
     if not offers:
-        raise OfficialDataUnavailable(
-            f"Pools MMM présents mais prix ajusté non interprétable pour {symbol}"
+        print(
+            f"[MMM] {symbol} : pools présents, "
+            "mais aucune offre actuellement exécutable"
         )
+        return 0.0, None
 
-    offers.sort(key=lambda value: value[0], reverse=True)
-    return offers[0]
+    # Double sécurité : le résultat est retrié localement.
+    offers.sort(
+        key=lambda value: value[0],
+        reverse=True,
+    )
+
+    best_price, best_pool = offers[0]
+
+    print(
+        f"[MMM] {symbol} : meilleure offre nette "
+        f"= {best_price:.6f} SOL ; "
+        f"pool={best_pool.get('poolKey', 'inconnu')}"
+    )
+
+    return best_price, best_pool
 
 
 def get_sol_eur():
@@ -598,7 +686,12 @@ def main():
 
     raw_path = REPORT_DIR / f"{now.strftime('%Y-%m-%d')}.json"
     raw_path.write_text(
-        json.dumps(results, ensure_ascii=False, indent=2),
+        json.dumps(
+            results,
+            ensure_ascii=False,
+            indent=2,
+            default=str,
+        )
         encoding="utf-8",
     )
 
