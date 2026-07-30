@@ -132,22 +132,20 @@ def to_number(value, default=0.0):
         return default
 
 
+LAMPORTS_PER_SOL = 1_000_000_000
+
+
 def lamports_to_sol(value):
     """
-    Les champs financiers MMM sont normalement retournés en lamports.
-    Une valeur déjà exprimée en SOL est conservée par sécurité.
+    Les montants monétaires MMM Magic Eden sont exprimés en lamports.
+    Conversion systématique en SOL.
     """
     amount = to_number(value)
 
     if amount <= 0:
         return 0.0
 
-    # Les prix de ces collections dépassent plusieurs SOL :
-    # une valeur supérieure à 1 000 000 est nécessairement en lamports.
-    if amount > 1_000_000:
-        return amount / 1_000_000_000
-
-    return amount
+    return amount / LAMPORTS_PER_SOL
 
 
 def find_adjusted_price(pool):
@@ -210,6 +208,13 @@ def find_adjusted_price(pool):
     if adjusted_price_sol <= 0:
         return None
 
+    if adjusted_price_sol > 10_000:
+        raise OfficialDataUnavailable(
+            "Prix MMM aberrant après conversion "
+            f"pour le pool {pool.get('poolKey', 'inconnu')} : "
+            f"{adjusted_price_sol} SOL"
+        )
+    
     return adjusted_price_sol
 
 
@@ -281,8 +286,13 @@ def get_best_offer(symbol):
 
     if not pools:
         print(
-            f"[MMM] {symbol} : "
-            "aucun pool retourné par Magic Eden"
+            f"[MMM] {symbol} : meilleure offre nette "
+            f"= {best_price:.9f} SOL ; "
+            f"spotPrice brut={best_pool.get('spotPrice')} ; "
+            f"buysidePaymentAmount brut="
+            f"{best_pool.get('buysidePaymentAmount')} ; "
+            f"buyOrdersAmount={best_pool.get('buyOrdersAmount')} ; "
+            f"pool={best_pool.get('poolKey', 'inconnu')}"
         )
         return 0.0, None
 
