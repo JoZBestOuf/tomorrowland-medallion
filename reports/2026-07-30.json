@@ -1,18 +1,18 @@
 [
   {
-    "timestamp": "2026-07-30T11:43:50+02:00",
+    "timestamp": "2026-07-30T12:58:12+02:00",
     "symbol": "tomorrowland_winter",
     "name": "A Letter from the Universe",
     "buy_sol": 51.6499,
-    "sell_sol": 49.356,
-    "sol_eur": 64.54,
-    "buy_eur": 3333.4845460000006,
-    "sell_eur": 3185.4362400000005,
-    "spread_sol": -2.2939000000000007,
-    "spread_eur": -148.04830600000014,
-    "spread_pct": -4.441247708127219,
-    "buy_change_24h": -0.00019361084219983392,
-    "sell_change_24h": 0.1034377852144852,
+    "sell_sol": 49.434,
+    "sol_eur": 64.32,
+    "buy_eur": 3322.121568,
+    "sell_eur": 3179.5948799999996,
+    "spread_sol": -2.215900000000005,
+    "spread_eur": -142.52668800000038,
+    "spread_pct": -4.290230958820839,
+    "buy_change_24h": 0.0,
+    "sell_change_24h": 0.15803549720397894,
     "listing": {
       "pdaAddress": "AfRqSE2bjpjrJ5ZvC67FHTfjJUSshurCk874GG7sSeDb",
       "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
@@ -60,22 +60,22 @@
       "listingSource": "M2"
     },
     "pool": {
-      "spotPrice": 49356000000,
+      "spotPrice": 49434000000,
       "curveType": "linear",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1816940568,
+      "expiry": 1816945016,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "2ZCQ18QjibZZCPfcCesdZ1y2WMmZKd5rKZLyc2sjYGir",
       "sellsideAssetAmount": 0,
-      "buysidePaymentAmount": 74862013548,
+      "buysidePaymentAmount": 74672013548,
       "buyOrdersAmount": 1,
       "collectionSymbol": "tomorrowland_winter",
       "collectionName": "Tomorrowland: A Letter from the Universe",
       "poolType": "buy_sided",
-      "updatedAt": "2026-07-30T09:42:49.819Z",
+      "updatedAt": "2026-07-30T10:56:57.448Z",
       "uuid": "CdQLSpdGtHVJAtVF9JvsYmnLg2N7RXDiVu4qt7SKEHzF",
       "poolKey": "4wh16aAcwqR7xcfBQoXcFzF8FECj5nzLy7YeFyeMnXCk",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -87,24 +87,24 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "JCp84rSEtzB3tcus3w1iM2dCAoWzquxrU9qMk77qpCim",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 49356000000
+        "sharedEscrowBuysidePaymentAmount": 49434000000
       }
     }
   },
   {
-    "timestamp": "2026-07-30T11:43:50+02:00",
+    "timestamp": "2026-07-30T12:58:12+02:00",
     "symbol": "the_reflection_of_love",
     "name": "The Reflection of Love",
     "buy_sol": 15.378,
-    "sell_sol": 14.5108,
-    "sol_eur": 64.54,
-    "buy_eur": 992.4961200000001,
-    "sell_eur": 936.5270320000001,
-    "spread_sol": -0.8672000000000004,
-    "spread_eur": -55.969088000000056,
-    "spread_pct": -5.639224866692681,
+    "sell_sol": 14.512,
+    "sol_eur": 64.32,
+    "buy_eur": 989.1129599999999,
+    "sell_eur": 933.41184,
+    "spread_sol": -0.8659999999999997,
+    "spread_eur": -55.701119999999946,
+    "spread_pct": -5.631421511249835,
     "buy_change_24h": 0.0,
-    "sell_change_24h": 0.0027566435108547505,
+    "sell_change_24h": 0.008269702566369573,
     "listing": {
       "pdaAddress": "APN2cSNDchhYXTjEMADQ1CJ4wUReK6esR1wTsfew4fzV",
       "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
@@ -219,12 +219,12 @@
       "listingSource": "M2"
     },
     "pool": {
-      "spotPrice": 14510800000,
+      "spotPrice": 14512000000,
       "curveType": "exp",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1814347920,
+      "expiry": 1814352815,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "BJPHrK3zjizXRLwqMQKb6WeK1LLhtSmwdfFL6raBwa3C",
@@ -234,7 +234,7 @@
       "collectionSymbol": "the_reflection_of_love",
       "collectionName": "Tomorrowland: The Reflection of Love",
       "poolType": "buy_sided",
-      "updatedAt": "2026-07-30T09:32:04.579Z",
+      "updatedAt": "2026-07-30T10:53:37.546Z",
       "uuid": "72B6fcse69F5aAre4vkdmmuJuVTktArDVFnMMqRNrKtD",
       "poolKey": "H8ALt1dyGhgxxq7Ao3e1cZmoA39Aih674HHR9x78rEqe",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -246,24 +246,24 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "GhgSPef9RXEb2o3iYkjC3M9RKGLCDF3nwmarGuogp7ZV",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 14510800000
+        "sharedEscrowBuysidePaymentAmount": 14512000000
       }
     }
   },
   {
-    "timestamp": "2026-07-30T11:43:50+02:00",
+    "timestamp": "2026-07-30T12:58:12+02:00",
     "symbol": "tomorrowland_love_unity",
     "name": "The Symbol of Love and Unity",
     "buy_sol": 2.148,
-    "sell_sol": 1.93483,
-    "sol_eur": 64.54,
-    "buy_eur": 138.63192,
-    "sell_eur": 124.87392820000001,
-    "spread_sol": -0.21317000000000008,
-    "spread_eur": -13.7579918,
-    "spread_pct": -9.924115456238363,
-    "buy_change_24h": 0.004655710228605197,
-    "sell_change_24h": 5.268598610386816,
+    "sell_sol": 1.934305,
+    "sol_eur": 64.32,
+    "buy_eur": 138.15936,
+    "sell_eur": 124.41449759999999,
+    "spread_sol": -0.2136950000000002,
+    "spread_eur": -13.744862400000002,
+    "spread_pct": -9.948556797020492,
+    "buy_change_24h": 0.0,
+    "sell_change_24h": -0.02713416682603168,
     "listing": {
       "pdaAddress": "6Un2dAjWajcWMuMX6FHUty99YUxi7c6GE3Nc5XXfk5Xw",
       "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
@@ -378,12 +378,12 @@
       "listingSource": "M2"
     },
     "pool": {
-      "spotPrice": 1934830000,
+      "spotPrice": 1934305000,
       "curveType": "exp",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1814347703,
+      "expiry": 1814352226,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "BJPHrK3zjizXRLwqMQKb6WeK1LLhtSmwdfFL6raBwa3C",
@@ -393,7 +393,7 @@
       "collectionSymbol": "tomorrowland_love_unity",
       "collectionName": "Tomorrowland: The Symbol of Love and Unity",
       "poolType": "buy_sided",
-      "updatedAt": "2026-07-30T09:28:28.130Z",
+      "updatedAt": "2026-07-30T10:43:48.710Z",
       "uuid": "7PY5KKnrYd8SnV3gvbMVkj7XM5iCRKu5V7owJr7KUro5",
       "poolKey": "G9ui1wAUAgekx2i57reUjzAGCzrsgMwJivVpoAujDLac",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -405,7 +405,7 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "GhgSPef9RXEb2o3iYkjC3M9RKGLCDF3nwmarGuogp7ZV",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 1934830000
+        "sharedEscrowBuysidePaymentAmount": 1934305000
       }
     }
   }
