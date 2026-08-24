@@ -1,11 +1,44 @@
 {
-  "generated_at": "2026-08-24T09:11:52",
+  "generated_at": "2026-08-24T10:33:52",
   "latest": {
+    "timestamp": "2026-08-24T12:33:49+02:00",
+    "total_buy_sol": 71.5271,
+    "total_sell_sol": 65.66505,
+    "total_buy_eur": 5820.875397999999,
+    "total_sell_eur": 5343.821768999999,
+    "sol_eur": 81.38,
+    "spread_pct": -8.195565037587167,
+    "collections": {
+      "tomorrowland_winter": {
+        "name": "A Letter from the Universe",
+        "buy_sol": 53.362,
+        "sell_sol": 49.3501,
+        "buy_eur": 4342.59956,
+        "sell_eur": 4016.1111379999998
+      },
+      "the_reflection_of_love": {
+        "name": "The Reflection of Love",
+        "buy_sol": 15.8252,
+        "sell_sol": 14.3,
+        "buy_eur": 1287.854776,
+        "sell_eur": 1163.734
+      },
+      "tomorrowland_love_unity": {
+        "name": "The Symbol of Love and Unity",
+        "buy_sol": 2.3399,
+        "sell_sol": 2.01495,
+        "buy_eur": 190.421062,
+        "sell_eur": 163.97663099999997
+      }
+    }
+  },
+  "previous": {
     "timestamp": "2026-08-24T11:11:15+02:00",
     "total_buy_sol": 71.4851,
     "total_sell_sol": 64.7325475,
     "total_buy_eur": 5784.574292,
     "total_sell_eur": 5238.1577437,
+    "sol_eur": 80.92,
     "spread_pct": -9.446097858155065,
     "collections": {
       "tomorrowland_winter": {
@@ -31,44 +64,14 @@
       }
     }
   },
-  "previous": {
-    "timestamp": "2026-08-23T09:57:13+02:00",
-    "total_buy_sol": 73.6358,
-    "total_sell_sol": 67.13745,
-    "total_buy_eur": 5807.655546000001,
-    "total_sell_eur": 5295.130681500001,
-    "spread_pct": -8.824987302371946,
-    "collections": {
-      "tomorrowland_winter": {
-        "name": "A Letter from the Universe",
-        "buy_sol": 55.3443,
-        "sell_sol": 51.461,
-        "buy_eur": 4365.004941,
-        "sell_eur": 4058.7290700000003
-      },
-      "the_reflection_of_love": {
-        "name": "The Reflection of Love",
-        "buy_sol": 15.9415,
-        "sell_sol": 13.6615,
-        "buy_eur": 1257.3061050000001,
-        "sell_eur": 1077.4825050000002
-      },
-      "tomorrowland_love_unity": {
-        "name": "The Symbol of Love and Unity",
-        "buy_sol": 2.35,
-        "sell_sol": 2.01495,
-        "buy_eur": 185.3445,
-        "sell_eur": 158.9191065
-      }
-    }
-  },
   "series": [
     {
       "timestamp": "2026-07-30T11:11:55+02:00",
       "total_buy_sol": 69.1759,
       "total_sell_sol": 65.6533935,
-      "total_buy_eur": 4456.311478,
+      "total_buy_eur": 4456.3114780000005,
       "total_sell_eur": 4229.39160927,
+      "sol_eur": 64.42,
       "spread_pct": -5.092100717157264,
       "collections": {
         "tomorrowland_winter": {
@@ -98,8 +101,9 @@
       "timestamp": "2026-07-30T11:43:50+02:00",
       "total_buy_sol": 69.1759,
       "total_sell_sol": 65.80163,
-      "total_buy_eur": 4464.612586,
+      "total_buy_eur": 4464.612586000001,
       "total_sell_eur": 4246.837200200001,
+      "sol_eur": 64.54,
       "spread_pct": -4.877811492152608,
       "collections": {
         "tomorrowland_winter": {
@@ -130,7 +134,8 @@
       "total_buy_sol": 67.8664,
       "total_sell_sol": 63.00735,
       "total_buy_eur": 4338.698952,
-      "total_sell_eur": 4028.0598855000003,
+      "total_sell_eur": 4028.0598855,
+      "sol_eur": 63.93,
       "spread_pct": -7.15972852545589,
       "collections": {
         "tomorrowland_winter": {
@@ -160,8 +165,9 @@
       "timestamp": "2026-07-31T15:12:58+02:00",
       "total_buy_sol": 68.5562,
       "total_sell_sol": 63.7393,
-      "total_buy_eur": 4393.766858000001,
+      "total_buy_eur": 4393.766858,
       "total_sell_eur": 4085.0517370000002,
+      "sol_eur": 64.09,
       "spread_pct": -7.0262062366350575,
       "collections": {
         "tomorrowland_winter": {
@@ -191,8 +197,9 @@
       "timestamp": "2026-08-01T13:12:22+02:00",
       "total_buy_sol": 69.4295,
       "total_sell_sol": 66.1878,
-      "total_buy_eur": 4385.8615150000005,
+      "total_buy_eur": 4385.861515,
       "total_sell_eur": 4181.083326,
+      "sol_eur": 63.17,
       "spread_pct": -4.669052780158302,
       "collections": {
         "tomorrowland_winter": {
@@ -222,8 +229,9 @@
       "timestamp": "2026-08-02T13:08:29+02:00",
       "total_buy_sol": 67.99979,
       "total_sell_sol": 66.2839,
-      "total_buy_eur": 4320.026658700001,
-      "total_sell_eur": 4211.016167000001,
+      "total_buy_eur": 4320.0266587,
+      "total_sell_eur": 4211.016167,
+      "sol_eur": 63.53,
       "spread_pct": -2.5233754398359194,
       "collections": {
         "tomorrowland_winter": {
@@ -253,8 +261,9 @@
       "timestamp": "2026-08-03T18:06:49+02:00",
       "total_buy_sol": 70.3769,
       "total_sell_sol": 68.5149,
-      "total_buy_eur": 4497.787679,
+      "total_buy_eur": 4497.787678999999,
       "total_sell_eur": 4378.787259,
+      "sol_eur": 63.91,
       "spread_pct": -2.6457545018322897,
       "collections": {
         "tomorrowland_winter": {
@@ -286,6 +295,7 @@
       "total_sell_sol": 69.0055,
       "total_buy_eur": 4542.0582279,
       "total_sell_eur": 4423.942605,
+      "sol_eur": 64.11,
       "spread_pct": -2.600486761144204,
       "collections": {
         "tomorrowland_winter": {
@@ -317,6 +327,7 @@
       "total_sell_sol": 68.320075,
       "total_buy_eur": 4515.2872661,
       "total_sell_eur": 4378.633606750001,
+      "sol_eur": 64.09,
       "spread_pct": -3.026466563400568,
       "collections": {
         "tomorrowland_winter": {
@@ -346,8 +357,9 @@
       "timestamp": "2026-08-06T15:04:45+02:00",
       "total_buy_sol": 73.0343,
       "total_sell_sol": 70.0213,
-      "total_buy_eur": 4622.340847,
+      "total_buy_eur": 4622.3408469999995,
       "total_sell_eur": 4431.648077,
+      "sol_eur": 63.29,
       "spread_pct": -4.125458859741252,
       "collections": {
         "tomorrowland_winter": {
@@ -378,7 +390,8 @@
       "total_buy_sol": 73.358899,
       "total_sell_sol": 70.4686,
       "total_buy_eur": 4688.36723509,
-      "total_sell_eur": 4503.648225999999,
+      "total_sell_eur": 4503.648226,
+      "sol_eur": 63.91,
       "spread_pct": -3.939943264415677,
       "collections": {
         "tomorrowland_winter": {
@@ -409,7 +422,8 @@
       "total_buy_sol": 73.2249,
       "total_sell_sol": 71.02485,
       "total_buy_eur": 4733.257536,
-      "total_sell_eur": 4591.046304,
+      "total_sell_eur": 4591.0463039999995,
+      "sol_eur": 64.64,
       "spread_pct": -3.0045107606838717,
       "collections": {
         "tomorrowland_winter": {
@@ -441,6 +455,7 @@
       "total_sell_sol": 71.8758,
       "total_buy_eur": 4856.90777091,
       "total_sell_eur": 4750.271622,
+      "sol_eur": 66.09,
       "spread_pct": -2.1955563897813266,
       "collections": {
         "tomorrowland_winter": {
@@ -472,6 +487,7 @@
       "total_sell_sol": 71.585425,
       "total_buy_eur": 4855.640832,
       "total_sell_eur": 4750.408803,
+      "sol_eur": 66.36,
       "spread_pct": -2.167211963176767,
       "collections": {
         "tomorrowland_winter": {
@@ -502,7 +518,8 @@
       "total_buy_sol": 73.2596,
       "total_sell_sol": 71.73924385,
       "total_buy_eur": 4810.957932,
-      "total_sell_eur": 4711.1161436295,
+      "total_sell_eur": 4711.116143629501,
+      "sol_eur": 65.67,
       "spread_pct": -2.075299551185117,
       "collections": {
         "tomorrowland_winter": {
@@ -534,6 +551,7 @@
       "total_sell_sol": 71.957199856,
       "total_buy_eur": 4869.79569,
       "total_sell_eur": 4785.873362422561,
+      "sol_eur": 66.51,
       "spread_pct": -1.723323377811759,
       "collections": {
         "tomorrowland_winter": {
@@ -563,8 +581,9 @@
       "timestamp": "2026-08-13T12:36:14+02:00",
       "total_buy_sol": 75.3693,
       "total_sell_sol": 72.45694385,
-      "total_buy_eur": 4944.979773,
+      "total_buy_eur": 4944.979772999999,
       "total_sell_eur": 4753.9000859985,
+      "sol_eur": 65.61,
       "spread_pct": -3.864114632881019,
       "collections": {
         "tomorrowland_winter": {
@@ -596,6 +615,7 @@
       "total_sell_sol": 74.33839385,
       "total_buy_eur": 4928.763379200001,
       "total_sell_eur": 4852.8103505280005,
+      "sol_eur": 65.28,
       "spread_pct": -1.541015926886069,
       "collections": {
         "tomorrowland_winter": {
@@ -627,6 +647,7 @@
       "total_sell_sol": 79.81994999999999,
       "total_buy_eur": 5202.841694,
       "total_sell_eur": 5193.085947,
+      "sol_eur": 65.06,
       "spread_pct": -0.18750804990378134,
       "collections": {
         "tomorrowland_winter": {
@@ -658,6 +679,7 @@
       "total_sell_sol": 77.1859,
       "total_buy_eur": 5217.699193,
       "total_sell_eur": 5030.205103,
+      "sol_eur": 65.17,
       "spread_pct": -3.593424669853322,
       "collections": {
         "tomorrowland_winter": {
@@ -687,8 +709,9 @@
       "timestamp": "2026-08-17T10:26:34+02:00",
       "total_buy_sol": 80.9788,
       "total_sell_sol": 78.0249,
-      "total_buy_eur": 5257.143696000001,
+      "total_buy_eur": 5257.143696,
       "total_sell_eur": 5065.376508,
+      "sol_eur": 64.92,
       "spread_pct": -3.6477448418598497,
       "collections": {
         "tomorrowland_winter": {
@@ -720,6 +743,7 @@
       "total_sell_sol": 78.6152,
       "total_buy_eur": 5329.96244,
       "total_sell_eur": 5154.012512,
+      "sol_eur": 65.56,
       "spread_pct": -3.301147615591834,
       "collections": {
         "tomorrowland_winter": {
@@ -749,8 +773,9 @@
       "timestamp": "2026-08-19T10:06:18+02:00",
       "total_buy_sol": 83.287,
       "total_sell_sol": 78.43090000000001,
-      "total_buy_eur": 5526.09245,
-      "total_sell_eur": 5203.890215,
+      "total_buy_eur": 5526.092449999999,
+      "total_sell_eur": 5203.890214999999,
+      "sol_eur": 66.35,
       "spread_pct": -5.830561792356547,
       "collections": {
         "tomorrowland_winter": {
@@ -782,6 +807,7 @@
       "total_sell_sol": 68.4017,
       "total_buy_eur": 5955.755400000001,
       "total_sell_eur": 5113.7110920000005,
+      "sol_eur": 74.76,
       "spread_pct": -14.13832925375008,
       "collections": {
         "tomorrowland_winter": {
@@ -811,8 +837,9 @@
       "timestamp": "2026-08-21T10:20:34+02:00",
       "total_buy_sol": 78.497,
       "total_sell_sol": 72.4135,
-      "total_buy_eur": 6121.98103,
-      "total_sell_eur": 5647.528864999999,
+      "total_buy_eur": 6121.981029999999,
+      "total_sell_eur": 5647.528865,
+      "sol_eur": 77.99,
       "spread_pct": -7.749977706154376,
       "collections": {
         "tomorrowland_winter": {
@@ -842,8 +869,9 @@
       "timestamp": "2026-08-22T09:53:35+02:00",
       "total_buy_sol": 73.658,
       "total_sell_sol": 70.40259999999999,
-      "total_buy_eur": 5961.87852,
-      "total_sell_eur": 5698.386443999999,
+      "total_buy_eur": 5961.878519999999,
+      "total_sell_eur": 5698.386444,
+      "sol_eur": 80.94,
       "spread_pct": -4.419614977327662,
       "collections": {
         "tomorrowland_winter": {
@@ -873,8 +901,9 @@
       "timestamp": "2026-08-23T09:57:13+02:00",
       "total_buy_sol": 73.6358,
       "total_sell_sol": 67.13745,
-      "total_buy_eur": 5807.655546000001,
+      "total_buy_eur": 5807.655546,
       "total_sell_eur": 5295.130681500001,
+      "sol_eur": 78.87,
       "spread_pct": -8.824987302371946,
       "collections": {
         "tomorrowland_winter": {
@@ -906,6 +935,7 @@
       "total_sell_sol": 64.7325475,
       "total_buy_eur": 5784.574292,
       "total_sell_eur": 5238.1577437,
+      "sol_eur": 80.92,
       "spread_pct": -9.446097858155065,
       "collections": {
         "tomorrowland_winter": {
@@ -928,6 +958,38 @@
           "sell_sol": 2.01495,
           "buy_eur": 189.34470800000003,
           "sell_eur": 163.04975399999998
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-24T12:33:49+02:00",
+      "total_buy_sol": 71.5271,
+      "total_sell_sol": 65.66505,
+      "total_buy_eur": 5820.875397999999,
+      "total_sell_eur": 5343.821768999999,
+      "sol_eur": 81.38,
+      "spread_pct": -8.195565037587167,
+      "collections": {
+        "tomorrowland_winter": {
+          "name": "A Letter from the Universe",
+          "buy_sol": 53.362,
+          "sell_sol": 49.3501,
+          "buy_eur": 4342.59956,
+          "sell_eur": 4016.1111379999998
+        },
+        "the_reflection_of_love": {
+          "name": "The Reflection of Love",
+          "buy_sol": 15.8252,
+          "sell_sol": 14.3,
+          "buy_eur": 1287.854776,
+          "sell_eur": 1163.734
+        },
+        "tomorrowland_love_unity": {
+          "name": "The Symbol of Love and Unity",
+          "buy_sol": 2.3399,
+          "sell_sol": 2.01495,
+          "buy_eur": 190.421062,
+          "sell_eur": 163.97663099999997
         }
       }
     }
