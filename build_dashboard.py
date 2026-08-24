@@ -272,9 +272,23 @@ html = r'''<!doctype html>
   </section>
 
   <section class="card chart-card">
-    <h2>Évolution du prix d'achat par NFT</h2>
+    <h2>A Letter from the Universe</h2>
     <div class="chart-container">
-      <canvas id="chartNfts"></canvas>
+      <canvas id="chartWinter"></canvas>
+    </div>
+  </section>
+
+  <section class="card chart-card">
+    <h2>The Reflection of Love</h2>
+    <div class="chart-container">
+      <canvas id="chartReflection"></canvas>
+    </div>
+  </section>
+
+  <section class="card chart-card">
+    <h2>The Symbol of Love and Unity</h2>
+    <div class="chart-container">
+      <canvas id="chartSymbol"></canvas>
     </div>
   </section>
 
