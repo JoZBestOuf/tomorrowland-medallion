@@ -174,8 +174,20 @@ html = r'''<!doctype html>
       text-align: left;
     }
 
-    canvas {
-      max-height: 360px;
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 420px;
+    }
+
+    @media (max-width: 600px) {
+      .chart-container {
+        height: 400px;
+      }
+
+      .card {
+        padding: 16px 12px;
+      }
     }
 
     .good {
@@ -254,22 +266,30 @@ html = r'''<!doctype html>
 
   <section class="card chart-card">
     <h2>Évolution du Medallion en euros</h2>
-    <canvas id="chartMedallion"></canvas>
+    <div class="chart-container">
+      <canvas id="chartMedallion"></canvas>
+    </div>
   </section>
 
   <section class="card chart-card">
     <h2>Évolution du prix d'achat par NFT</h2>
-    <canvas id="chartNfts"></canvas>
+    <div class="chart-container">
+      <canvas id="chartNfts"></canvas>
+    </div>
   </section>
 
   <section class="card chart-card">
     <h2>Évolution du spread</h2>
-    <canvas id="chartSpread"></canvas>
+    <div class="chart-container">
+      <canvas id="chartSpread"></canvas>
+    </div>
   </section>
 
   <section class="card chart-card">
     <h2>Cours SOL / EUR</h2>
-    <canvas id="chartSol"></canvas>
+    <div class="chart-container">
+      <canvas id="chartSol"></canvas>
+    </div>
   </section>
 
   <p class="muted">
@@ -396,6 +416,7 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           interaction: {
             mode: 'index',
@@ -404,8 +425,16 @@ fetch('data.json?' + Date.now())
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
@@ -460,6 +489,7 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           interaction: {
             mode: 'index',
@@ -468,8 +498,16 @@ fetch('data.json?' + Date.now())
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
@@ -519,11 +557,20 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
@@ -572,11 +619,20 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
