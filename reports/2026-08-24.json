@@ -1,17 +1,17 @@
 [
   {
-    "timestamp": "2026-08-24T12:33:49+02:00",
+    "timestamp": "2026-08-24T13:01:22+02:00",
     "symbol": "tomorrowland_winter",
     "name": "A Letter from the Universe",
-    "buy_sol": 53.362,
+    "buy_sol": 53.4,
     "sell_sol": 49.3501,
-    "sol_eur": 81.38,
-    "buy_eur": 4342.59956,
-    "sell_eur": 4016.1111379999998,
-    "spread_sol": -4.011900000000004,
-    "spread_eur": -326.4884219999999,
-    "spread_pct": -7.518271429106862,
-    "buy_change_24h": 0.05812754308000751,
+    "sol_eur": 81.0,
+    "buy_eur": 4325.4,
+    "sell_eur": 3997.3581,
+    "spread_sol": -4.049900000000001,
+    "spread_eur": -328.0418999999997,
+    "spread_pct": -7.584082397003747,
+    "buy_change_24h": 0.07121172369850587,
     "sell_change_24h": 0.0,
     "listing": {
       "pdaAddress": "81dok3H6cJ8r5RGkMM5y9451m9rW7cZVf95vSzzLEoeT",
@@ -21,10 +21,10 @@
       "seller": "2ZCQ18QjibZZCPfcCesdZ1y2WMmZKd5rKZLyc2sjYGir",
       "sellerReferral": "autMW8SgBkVYeBgqYiTuJZnkvDZMVU2MHJh9Jh7CSQ2",
       "tokenSize": 1,
-      "price": 53.362,
+      "price": 53.4,
       "priceInfo": {
         "solPrice": {
-          "rawAmount": "53362000000",
+          "rawAmount": "53400000000",
           "address": "So11111111111111111111111111111111111111112",
           "decimals": 9
         }
@@ -46,12 +46,12 @@
         "sellerFeeBasisPoints": 500,
         "image": "",
         "attributes": [],
-        "price": 53.362,
+        "price": 53.4,
         "listStatus": "listed",
         "tokenAddress": "Fb6udzoGdaAHe1yPjHZMG16iDUGSkzRpUVpahodAFp37",
         "priceInfo": {
           "solPrice": {
-            "rawAmount": "53362000000",
+            "rawAmount": "53400000000",
             "address": "So11111111111111111111111111111111111111112",
             "decimals": 9
           }
@@ -76,8 +76,8 @@
       "collectionName": "Tomorrowland: A Letter from the Universe",
       "poolType": "buy_sided",
       "updatedAt": "2026-08-24T08:02:53.109Z",
-      "uuid": "7fAC6VxyuHPGgUtqgmoKzo9DtpxPz2jXfohaJcWFehpG",
-      "poolKey": "EmbZNFZrvDAmsaLKDKBdjXeF5NW34aafRBB4SBqLRexD",
+      "uuid": "Fqc17bRfbVLXfKfow4K4KPM5FWPBx8KXYcpdrK62TPGJ",
+      "poolKey": "FsfcYcPWFqKeosunX6HkR73BEtc7PXS7T1dwXwbnsaSp",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
       "mints": [],
       "collectionSellerFeeBasisPoints": 500,
@@ -92,19 +92,19 @@
     }
   },
   {
-    "timestamp": "2026-08-24T12:33:49+02:00",
+    "timestamp": "2026-08-24T13:01:22+02:00",
     "symbol": "the_reflection_of_love",
     "name": "The Reflection of Love",
-    "buy_sol": 15.8252,
+    "buy_sol": 15.8462,
     "sell_sol": 14.3,
-    "sol_eur": 81.38,
-    "buy_eur": 1287.854776,
-    "sell_eur": 1163.734,
-    "spread_sol": -1.5252,
-    "spread_eur": -124.12077599999998,
-    "spread_pct": -9.637792887293681,
-    "buy_change_24h": 0.06955773924701224,
-    "sell_change_24h": 6.975894328762747,
+    "sol_eur": 81.0,
+    "buy_eur": 1283.5421999999999,
+    "sell_eur": 1158.3,
+    "spread_sol": -1.546199999999999,
+    "spread_eur": -125.24219999999991,
+    "spread_pct": -9.757544395501753,
+    "buy_change_24h": 0.1326997447109611,
+    "sell_change_24h": 0.0,
     "listing": {
       "pdaAddress": "42jsenTHJuCXPiPrNhqbenVPNZNgJiqKuCSf1qtwTMcu",
       "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
@@ -113,10 +113,10 @@
       "seller": "2ZCQ18QjibZZCPfcCesdZ1y2WMmZKd5rKZLyc2sjYGir",
       "sellerReferral": "autMW8SgBkVYeBgqYiTuJZnkvDZMVU2MHJh9Jh7CSQ2",
       "tokenSize": 1,
-      "price": 15.8252,
+      "price": 15.8462,
       "priceInfo": {
         "solPrice": {
-          "rawAmount": "15825200000",
+          "rawAmount": "15846200000",
           "address": "So11111111111111111111111111111111111111112",
           "decimals": 9
         }
@@ -205,12 +205,12 @@
             }
           ]
         },
-        "price": 15.8252,
+        "price": 15.8462,
         "listStatus": "listed",
         "tokenAddress": "2mW8qjRQFtTKYHjdGAYtod2cTuG7BD46CypdtuxzPmZV",
         "priceInfo": {
           "solPrice": {
-            "rawAmount": "15825200000",
+            "rawAmount": "15846200000",
             "address": "So11111111111111111111111111111111111111112",
             "decimals": 9
           }
@@ -251,16 +251,16 @@
     }
   },
   {
-    "timestamp": "2026-08-24T12:33:49+02:00",
+    "timestamp": "2026-08-24T13:01:22+02:00",
     "symbol": "tomorrowland_love_unity",
     "name": "The Symbol of Love and Unity",
     "buy_sol": 2.3399,
     "sell_sol": 2.01495,
-    "sol_eur": 81.38,
-    "buy_eur": 190.421062,
-    "sell_eur": 163.97663099999997,
+    "sol_eur": 81.0,
+    "buy_eur": 189.5319,
+    "sell_eur": 163.21095,
     "spread_sol": -0.3249500000000003,
-    "spread_eur": -26.444431000000037,
+    "spread_eur": -26.32095000000001,
     "spread_pct": -13.8873456130604,
     "buy_change_24h": 0.0,
     "sell_change_24h": 0.0,

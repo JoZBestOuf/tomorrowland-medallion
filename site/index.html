@@ -89,8 +89,20 @@
       text-align: left;
     }
 
-    canvas {
-      max-height: 360px;
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 420px;
+    }
+
+    @media (max-width: 600px) {
+      .chart-container {
+        height: 400px;
+      }
+
+      .card {
+        padding: 16px 12px;
+      }
     }
 
     .good {
@@ -169,22 +181,44 @@
 
   <section class="card chart-card">
     <h2>Évolution du Medallion en euros</h2>
-    <canvas id="chartMedallion"></canvas>
+    <div class="chart-container">
+      <canvas id="chartMedallion"></canvas>
+    </div>
   </section>
 
   <section class="card chart-card">
-    <h2>Évolution du prix d'achat par NFT</h2>
-    <canvas id="chartNfts"></canvas>
+    <h2>A Letter from the Universe</h2>
+    <div class="chart-container">
+      <canvas id="chartWinter"></canvas>
+    </div>
+  </section>
+
+  <section class="card chart-card">
+    <h2>The Reflection of Love</h2>
+    <div class="chart-container">
+      <canvas id="chartReflection"></canvas>
+    </div>
+  </section>
+
+  <section class="card chart-card">
+    <h2>The Symbol of Love and Unity</h2>
+    <div class="chart-container">
+      <canvas id="chartSymbol"></canvas>
+    </div>
   </section>
 
   <section class="card chart-card">
     <h2>Évolution du spread</h2>
-    <canvas id="chartSpread"></canvas>
+    <div class="chart-container">
+      <canvas id="chartSpread"></canvas>
+    </div>
   </section>
 
   <section class="card chart-card">
     <h2>Cours SOL / EUR</h2>
-    <canvas id="chartSol"></canvas>
+    <div class="chart-container">
+      <canvas id="chartSol"></canvas>
+    </div>
   </section>
 
   <p class="muted">
@@ -311,6 +345,7 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           interaction: {
             mode: 'index',
@@ -319,8 +354,16 @@ fetch('data.json?' + Date.now())
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
@@ -352,68 +395,100 @@ fetch('data.json?' + Date.now())
     );
 
     // 2. Evolution de chaque NFT en euros
-    const symbols = Object.keys(x.collections);
-
-    const nftDatasets = symbols.map(symbol => ({
-      label: x.collections[symbol].name,
-      data: d.series.map(
-        s => s.collections[symbol]
-          ? s.collections[symbol].buy_eur
-          : null
-      )
-    }));
-
-    new Chart(
-      document.getElementById('chartNfts'),
+    const nftCharts = [
       {
-        type: 'line',
+        canvas: 'chartWinter',
+        symbol: 'tomorrowland_winter',
+        label: 'A Letter from the Universe'
+      },
+      {
+        canvas: 'chartReflection',
+        symbol: 'the_reflection_of_love',
+        label: 'The Reflection of Love'
+      },
+      {
+        canvas: 'chartSymbol',
+        symbol: 'tomorrowland_love_unity',
+        label: 'The Symbol of Love and Unity'
+      }
+    ];
 
-        data: {
-          labels: d.series.map(dates),
-          datasets: nftDatasets
-        },
+    nftCharts.forEach(cfg => {
+      new Chart(
+        document.getElementById(cfg.canvas),
+        {
+          type: 'line',
 
-        options: {
-          responsive: true,
+          data: {
+            labels: d.series.map(dates),
 
-          interaction: {
-            mode: 'index',
-            intersect: false
+            datasets: [
+              {
+                label: cfg.label + ' (€)',
+                data: d.series.map(
+                  s => s.collections[cfg.symbol]
+                    ? s.collections[cfg.symbol].buy_eur
+                    : null
+                )
+              }
+            ]
           },
 
-          scales: {
-            x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            interaction: {
+              mode: 'index',
+              intersect: false
             },
 
-            y: {
-              ticks: {
-                color: '#aaa9bd',
-                callback: value => f(value, 0) + ' €'
+            scales: {
+              x: {
+                ticks: {
+                  color: '#aaa9bd',
+                  autoSkip: true,
+                  maxTicksLimit: 7,
+                  maxRotation: 45,
+                  minRotation: 45
+                },
+                grid: {
+                  color: '#29273d'
+                }
               },
-              grid: { color: '#29273d' }
-            }
-          },
 
-          plugins: {
-            legend: {
-              labels: { color: '#e8e8f0' }
+              y: {
+                ticks: {
+                  color: '#aaa9bd',
+                  callback: value => f(value, 0) + ' €'
+                },
+                grid: {
+                  color: '#29273d'
+                }
+              }
             },
 
-            tooltip: {
-              callbacks: {
-                label: ctx =>
-                  ctx.dataset.label +
-                  ' : ' +
-                  f(ctx.raw) +
-                  ' €'
+            plugins: {
+              legend: {
+                labels: {
+                  color: '#e8e8f0'
+                }
+              },
+
+              tooltip: {
+                callbacks: {
+                  label: ctx =>
+                    cfg.label +
+                    ' : ' +
+                    f(ctx.raw) +
+                    ' €'
+                }
               }
             }
           }
         }
-      }
-    );
+      );
+    });
 
     // 3. Spread total en %
     new Chart(
@@ -434,11 +509,20 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
@@ -487,11 +571,20 @@ fetch('data.json?' + Date.now())
 
         options: {
           responsive: true,
+          maintainAspectRatio: false,
 
           scales: {
             x: {
-              ticks: { color: '#aaa9bd' },
-              grid: { color: '#29273d' }
+              ticks: {
+                color: '#aaa9bd',
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 45,
+                minRotation: 45
+              },
+              grid: {
+                color: '#29273d'
+              }
             },
 
             y: {
