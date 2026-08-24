@@ -480,77 +480,100 @@ fetch('data.json?' + Date.now())
     );
 
     // 2. Evolution de chaque NFT en euros
-    const symbols = Object.keys(x.collections);
-
-    const nftDatasets = symbols.map(symbol => ({
-      label: x.collections[symbol].name,
-      data: d.series.map(
-        s => s.collections[symbol]
-          ? s.collections[symbol].buy_eur
-          : null
-      )
-    }));
-
-    new Chart(
-      document.getElementById('chartNfts'),
+    const nftCharts = [
       {
-        type: 'line',
+        canvas: 'chartWinter',
+        symbol: 'tomorrowland_winter',
+        label: 'A Letter from the Universe'
+      },
+      {
+        canvas: 'chartReflection',
+        symbol: 'the_reflection_of_love',
+        label: 'The Reflection of Love'
+      },
+      {
+        canvas: 'chartSymbol',
+        symbol: 'tomorrowland_love_unity',
+        label: 'The Symbol of Love and Unity'
+      }
+    ];
 
-        data: {
-          labels: d.series.map(dates),
-          datasets: nftDatasets
-        },
+    nftCharts.forEach(cfg => {
+      new Chart(
+        document.getElementById(cfg.canvas),
+        {
+          type: 'line',
 
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          data: {
+            labels: d.series.map(dates),
 
-          interaction: {
-            mode: 'index',
-            intersect: false
+            datasets: [
+              {
+                label: cfg.label + ' (€)',
+                data: d.series.map(
+                  s => s.collections[cfg.symbol]
+                    ? s.collections[cfg.symbol].buy_eur
+                    : null
+                )
+              }
+            ]
           },
 
-          scales: {
-            x: {
-              ticks: {
-                color: '#aaa9bd',
-                autoSkip: true,
-                maxTicksLimit: 7,
-                maxRotation: 45,
-                minRotation: 45
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            interaction: {
+              mode: 'index',
+              intersect: false
+            },
+
+            scales: {
+              x: {
+                ticks: {
+                  color: '#aaa9bd',
+                  autoSkip: true,
+                  maxTicksLimit: 7,
+                  maxRotation: 45,
+                  minRotation: 45
+                },
+                grid: {
+                  color: '#29273d'
+                }
               },
-              grid: {
-                color: '#29273d'
+
+              y: {
+                ticks: {
+                  color: '#aaa9bd',
+                  callback: value => f(value, 0) + ' €'
+                },
+                grid: {
+                  color: '#29273d'
+                }
               }
             },
 
-            y: {
-              ticks: {
-                color: '#aaa9bd',
-                callback: value => f(value, 0) + ' €'
+            plugins: {
+              legend: {
+                labels: {
+                  color: '#e8e8f0'
+                }
               },
-              grid: { color: '#29273d' }
-            }
-          },
 
-          plugins: {
-            legend: {
-              labels: { color: '#e8e8f0' }
-            },
-
-            tooltip: {
-              callbacks: {
-                label: ctx =>
-                  ctx.dataset.label +
-                  ' : ' +
-                  f(ctx.raw) +
-                  ' €'
+              tooltip: {
+                callbacks: {
+                  label: ctx =>
+                    cfg.label +
+                    ' : ' +
+                    f(ctx.raw) +
+                    ' €'
+                }
               }
             }
           }
         }
-      }
-    );
+      );
+    });
 
     // 3. Spread total en %
     new Chart(
