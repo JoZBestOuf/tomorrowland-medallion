@@ -1,6 +1,38 @@
 {
-  "generated_at": "2026-09-05T10:52:12",
+  "generated_at": "2026-09-06T11:16:19",
   "latest": {
+    "timestamp": "2026-09-06T13:16:16+02:00",
+    "total_buy_sol": 66.0,
+    "total_sell_sol": 62.76585,
+    "total_buy_eur": 6058.14,
+    "total_sell_eur": 5761.2773715,
+    "sol_eur": 91.79,
+    "spread_pct": -4.900227272727272,
+    "collections": {
+      "tomorrowland_winter": {
+        "name": "A Letter from the Universe",
+        "buy_sol": 50.0,
+        "sell_sol": 47.97975,
+        "buy_eur": 4589.5,
+        "sell_eur": 4404.061252500001
+      },
+      "the_reflection_of_love": {
+        "name": "The Reflection of Love",
+        "buy_sol": 14.0,
+        "sell_sol": 13.078,
+        "buy_eur": 1285.0600000000002,
+        "sell_eur": 1200.42962
+      },
+      "tomorrowland_love_unity": {
+        "name": "The Symbol of Love and Unity",
+        "buy_sol": 2.0,
+        "sell_sol": 1.7081,
+        "buy_eur": 183.58,
+        "sell_eur": 156.786499
+      }
+    }
+  },
+  "previous": {
     "timestamp": "2026-09-05T12:52:09+02:00",
     "total_buy_sol": 65.7772,
     "total_sell_sol": 62.7393,
@@ -29,38 +61,6 @@
         "sell_sol": 1.866,
         "buy_eur": 185.40026,
         "sell_eur": 164.89842000000002
-      }
-    }
-  },
-  "previous": {
-    "timestamp": "2026-09-04T13:38:06+02:00",
-    "total_buy_sol": 67.5969,
-    "total_sell_sol": 61.212625,
-    "total_buy_eur": 6076.961310000001,
-    "total_sell_eur": 5503.014987500001,
-    "sol_eur": 89.9,
-    "spread_pct": -9.444626898570794,
-    "collections": {
-      "tomorrowland_winter": {
-        "name": "A Letter from the Universe",
-        "buy_sol": 51.5,
-        "sell_sol": 46.316,
-        "buy_eur": 4629.85,
-        "sell_eur": 4163.808400000001
-      },
-      "the_reflection_of_love": {
-        "name": "The Reflection of Love",
-        "buy_sol": 14.0,
-        "sell_sol": 13.316625,
-        "buy_eur": 1258.6000000000001,
-        "sell_eur": 1197.1645875000002
-      },
-      "tomorrowland_love_unity": {
-        "name": "The Symbol of Love and Unity",
-        "buy_sol": 2.0969,
-        "sell_sol": 1.58,
-        "buy_eur": 188.51131000000004,
-        "sell_eur": 142.042
       }
     }
   },
@@ -1278,6 +1278,38 @@
           "sell_sol": 1.866,
           "buy_eur": 185.40026,
           "sell_eur": 164.89842000000002
+        }
+      }
+    },
+    {
+      "timestamp": "2026-09-06T13:16:16+02:00",
+      "total_buy_sol": 66.0,
+      "total_sell_sol": 62.76585,
+      "total_buy_eur": 6058.14,
+      "total_sell_eur": 5761.2773715,
+      "sol_eur": 91.79,
+      "spread_pct": -4.900227272727272,
+      "collections": {
+        "tomorrowland_winter": {
+          "name": "A Letter from the Universe",
+          "buy_sol": 50.0,
+          "sell_sol": 47.97975,
+          "buy_eur": 4589.5,
+          "sell_eur": 4404.061252500001
+        },
+        "the_reflection_of_love": {
+          "name": "The Reflection of Love",
+          "buy_sol": 14.0,
+          "sell_sol": 13.078,
+          "buy_eur": 1285.0600000000002,
+          "sell_eur": 1200.42962
+        },
+        "tomorrowland_love_unity": {
+          "name": "The Symbol of Love and Unity",
+          "buy_sol": 2.0,
+          "sell_sol": 1.7081,
+          "buy_eur": 183.58,
+          "sell_eur": 156.786499
         }
       }
     }
