@@ -1,0 +1,407 @@
+[
+  {
+    "timestamp": "2026-10-05T17:11:05+02:00",
+    "symbol": "tomorrowland_winter",
+    "name": "A Letter from the Universe",
+    "buy_sol": 46.3824,
+    "sell_sol": 44.8842,
+    "sol_eur": 106.74,
+    "buy_eur": 4950.857375999999,
+    "sell_eur": 4790.9395079999995,
+    "spread_sol": -1.498199999999997,
+    "spread_eur": -159.91786799999954,
+    "spread_pct": -3.230104522405044,
+    "buy_change_24h": -0.009054338968590979,
+    "sell_change_24h": 0.15217779364512088,
+    "listing": {
+      "pdaAddress": "H5yPn9PEWv89L7Fm9z6CsAVH4driY9BC6pByynYEHQHN",
+      "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
+      "tokenAddress": "FABBi3qeHuvzFt38aecTaz6n5zM7KRb1rfLCBtxdZ7fR",
+      "tokenMint": "6r9SLKgE55vdzJXBeAuFTgu3WgHCcCHaNs3GmrU4Ranu",
+      "seller": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
+      "sellerReferral": "autMW8SgBkVYeBgqYiTuJZnkvDZMVU2MHJh9Jh7CSQ2",
+      "tokenSize": 1,
+      "price": 46.3824,
+      "priceInfo": {
+        "solPrice": {
+          "rawAmount": "46382400000",
+          "address": "So11111111111111111111111111111111111111112",
+          "decimals": 9
+        }
+      },
+      "rarity": {},
+      "extra": {
+        "img": ""
+      },
+      "expiry": -1,
+      "token": {
+        "mintAddress": "6r9SLKgE55vdzJXBeAuFTgu3WgHCcCHaNs3GmrU4Ranu",
+        "owner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
+        "supply": 1,
+        "collection": "tomorrowland_winter",
+        "collectionName": "Tomorrowland: A Letter from the Universe",
+        "name": "Cold & Sunny #227",
+        "updateAuthority": "7WwfRCyBftGU5gcEfKnLzcnFQvq1CUEZafSDcqcC5PVk",
+        "primarySaleHappened": false,
+        "sellerFeeBasisPoints": 500,
+        "image": "",
+        "attributes": [],
+        "price": 46.3824,
+        "listStatus": "listed",
+        "tokenAddress": "FABBi3qeHuvzFt38aecTaz6n5zM7KRb1rfLCBtxdZ7fR",
+        "priceInfo": {
+          "solPrice": {
+            "rawAmount": "46382400000",
+            "address": "So11111111111111111111111111111111111111112",
+            "decimals": 9
+          }
+        }
+      },
+      "listingSource": "M2"
+    },
+    "pool": {
+      "spotPrice": 44884200000,
+      "curveType": "linear",
+      "curveDelta": 0,
+      "reinvestFulfillBuy": false,
+      "reinvestFulfillSell": false,
+      "expiry": 1822749064,
+      "lpFeeBp": 0,
+      "buysideCreatorRoyaltyBp": 0,
+      "poolOwner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
+      "sellsideAssetAmount": 0,
+      "buysidePaymentAmount": 90713007136,
+      "buyOrdersAmount": 1,
+      "collectionSymbol": "tomorrowland_winter",
+      "collectionName": "Tomorrowland: A Letter from the Universe",
+      "poolType": "buy_sided",
+      "updatedAt": "2026-10-05T15:11:05.319Z",
+      "uuid": "J9TFV9m5NUoQQVPmEE1pNRNrmfziwGKAnDTLUz67khrt",
+      "poolKey": "H5258WH9a87T7EFvcotfnFG5Kzg8bJ9rMwtr7KV2Mrja",
+      "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
+      "mints": [],
+      "collectionSellerFeeBasisPoints": 500,
+      "lpFeeEarned": 0,
+      "isMIP1": false,
+      "isOCP": false,
+      "sharedEscrowInfo": {
+        "sharedEscrowAddress": "FGqgzKNL9waGX4e5kqcrmiLBFu6AXVx621WTT6KJQMvw",
+        "sharedEscrowCount": 1,
+        "sharedEscrowBuysidePaymentAmount": 44884200000
+      }
+    }
+  },
+  {
+    "timestamp": "2026-10-05T17:11:05+02:00",
+    "symbol": "the_reflection_of_love",
+    "name": "The Reflection of Love",
+    "buy_sol": 15.5989,
+    "sell_sol": 14.5618,
+    "sol_eur": 106.74,
+    "buy_eur": 1665.026586,
+    "sell_eur": 1554.3265319999998,
+    "spread_sol": -1.0371000000000006,
+    "spread_eur": -110.70005400000014,
+    "spread_pct": -6.6485457307887135,
+    "buy_change_24h": -0.11014273730316143,
+    "sell_change_24h": -1.4309695935883855,
+    "listing": {
+      "pdaAddress": "3MgNXfQkcHqbx6nhqJnyMBqiRvwig1pXVkstgTqbgVkG",
+      "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
+      "tokenAddress": "HUXtBvR6Z2fviFwpCPTwVtS7McMPJKMq1rr7zcutzxXA",
+      "tokenMint": "E23wProFz6JnqrDHmUuNSFrWWj93aonBvG5hrtS7YnqB",
+      "seller": "9taD9QshRxnMzsPcnYpcamu66pwQurfyQ29tbkZVdrS6",
+      "sellerReferral": "autMW8SgBkVYeBgqYiTuJZnkvDZMVU2MHJh9Jh7CSQ2",
+      "tokenSize": 1,
+      "price": 15.5989,
+      "priceInfo": {
+        "solPrice": {
+          "rawAmount": "15598900000",
+          "address": "So11111111111111111111111111111111111111112",
+          "decimals": 9
+        }
+      },
+      "rarity": {
+        "howrare": {
+          "rank": 325
+        },
+        "moonrank": {
+          "rank": 356,
+          "absolute_rarity": 356,
+          "crawl": {}
+        }
+      },
+      "extra": {
+        "img": "https://bafybeialdkmzyz5xnuoaktlqtxjeazr36xqk3cnhxmctcqcl4uolbqe2mi.ipfs.nftstorage.link/1607.png?ext=png"
+      },
+      "expiry": -1,
+      "token": {
+        "mintAddress": "E23wProFz6JnqrDHmUuNSFrWWj93aonBvG5hrtS7YnqB",
+        "owner": "9taD9QshRxnMzsPcnYpcamu66pwQurfyQ29tbkZVdrS6",
+        "supply": 1,
+        "collection": "the_reflection_of_love",
+        "collectionName": "Tomorrowland: The Reflection of Love",
+        "name": "The Reflection of Love #1607",
+        "updateAuthority": "8EuVpWcKsns2dAfj5mS4LWJzSckgLYS7WGbhsAApLvVv",
+        "primarySaleHappened": true,
+        "sellerFeeBasisPoints": 500,
+        "image": "https://bafybeialdkmzyz5xnuoaktlqtxjeazr36xqk3cnhxmctcqcl4uolbqe2mi.ipfs.nftstorage.link/1607.png?ext=png",
+        "animationUrl": "https://bafybeialdkmzyz5xnuoaktlqtxjeazr36xqk3cnhxmctcqcl4uolbqe2mi.ipfs.nftstorage.link/1607.mp4",
+        "externalUrl": "https://nft.tomorrowland.com",
+        "attributes": [
+          {
+            "trait_type": "Background",
+            "value": "Spotlights White"
+          },
+          {
+            "trait_type": "Base",
+            "value": "Rose Gold"
+          },
+          {
+            "trait_type": "Crystal",
+            "value": "Red"
+          },
+          {
+            "trait_type": "Energy",
+            "value": "Revolving Energy"
+          },
+          {
+            "trait_type": "Main Lamps",
+            "value": "Cold Lamps 3"
+          },
+          {
+            "trait_type": "Mirror",
+            "value": "Diamond Mirror"
+          },
+          {
+            "trait_type": "Mood Lights",
+            "value": "Warm Mood"
+          },
+          {
+            "trait_type": "Orrery",
+            "value": "Upper Orrery"
+          },
+          {
+            "trait_type": "Statue",
+            "value": "Concrete"
+          }
+        ],
+        "properties": {
+          "files": [
+            {
+              "uri": "https://bafybeialdkmzyz5xnuoaktlqtxjeazr36xqk3cnhxmctcqcl4uolbqe2mi.ipfs.nftstorage.link/1607.png?ext=png",
+              "type": "image/png"
+            },
+            {
+              "uri": "https://bafybeialdkmzyz5xnuoaktlqtxjeazr36xqk3cnhxmctcqcl4uolbqe2mi.ipfs.nftstorage.link/1607.mp4?ext=mp4",
+              "type": "video/mp4"
+            }
+          ],
+          "category": "video",
+          "creators": [
+            {
+              "address": "HHm1oxxi2P7YoLVGuEvGv9sVUTZamZJycWNMRHjDJzbG",
+              "share": 100
+            }
+          ]
+        },
+        "price": 15.5989,
+        "listStatus": "listed",
+        "tokenAddress": "HUXtBvR6Z2fviFwpCPTwVtS7McMPJKMq1rr7zcutzxXA",
+        "priceInfo": {
+          "solPrice": {
+            "rawAmount": "15598900000",
+            "address": "So11111111111111111111111111111111111111112",
+            "decimals": 9
+          }
+        }
+      },
+      "listingSource": "M2"
+    },
+    "pool": {
+      "spotPrice": 14561800000,
+      "curveType": "linear",
+      "curveDelta": 0,
+      "reinvestFulfillBuy": false,
+      "reinvestFulfillSell": false,
+      "expiry": 1822748890,
+      "lpFeeBp": 0,
+      "buysideCreatorRoyaltyBp": 0,
+      "poolOwner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
+      "sellsideAssetAmount": 0,
+      "buysidePaymentAmount": 90713007136,
+      "buyOrdersAmount": 1,
+      "collectionSymbol": "the_reflection_of_love",
+      "collectionName": "Tomorrowland: The Reflection of Love",
+      "poolType": "buy_sided",
+      "updatedAt": "2026-10-05T15:08:10.905Z",
+      "uuid": "5Ly5jNTq9RKryF74sSUzj1fhYwk1boY8secBWuwidd6d",
+      "poolKey": "Go5odaThsDepvPnJ99c9We3Rav9X5nx5e91p7SYKmxoV",
+      "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
+      "mints": [],
+      "collectionSellerFeeBasisPoints": 500,
+      "lpFeeEarned": 0,
+      "isMIP1": false,
+      "isOCP": false,
+      "sharedEscrowInfo": {
+        "sharedEscrowAddress": "FGqgzKNL9waGX4e5kqcrmiLBFu6AXVx621WTT6KJQMvw",
+        "sharedEscrowCount": 1,
+        "sharedEscrowBuysidePaymentAmount": 14561800000
+      }
+    }
+  },
+  {
+    "timestamp": "2026-10-05T17:11:05+02:00",
+    "symbol": "tomorrowland_love_unity",
+    "name": "The Symbol of Love and Unity",
+    "buy_sol": 2.03772,
+    "sell_sol": 1.8517,
+    "sol_eur": 106.74,
+    "buy_eur": 217.50623280000002,
+    "sell_eur": 197.650458,
+    "spread_sol": -0.1860200000000003,
+    "spread_eur": -19.855774800000034,
+    "spread_pct": -9.128830261272416,
+    "buy_change_24h": 7.304897314375997,
+    "sell_change_24h": 7.926793728507309,
+    "listing": {
+      "pdaAddress": "GMfdR7pn4zbQFMxaJxJaGCMD2k2R4ven1YRjymJGciMu",
+      "auctionHouse": "E8cU1WiRWjanGxmn96ewBgk9vPTcL6AEZ1t6F6fkgUWe",
+      "tokenAddress": "GqTLqAPjkcG1jQtERm5kbu8uAENSWrhGsS7Xc22htUHg",
+      "tokenMint": "GXzSxtMohLHmg9s22HSLQVx1A4CsLoHh4WX1m3ecqeCz",
+      "seller": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
+      "sellerReferral": "GjMUaBf5QZTecHgojcSn7G8BPfKr8ap9s6w2JdJ9D8r3",
+      "tokenSize": 1,
+      "price": 2.03772,
+      "priceInfo": {
+        "solPrice": {
+          "rawAmount": "2037720000",
+          "address": "So11111111111111111111111111111111111111112",
+          "decimals": 9
+        }
+      },
+      "rarity": {
+        "howrare": {
+          "rank": 4515
+        },
+        "moonrank": {
+          "rank": 3051,
+          "absolute_rarity": 3051,
+          "crawl": {}
+        }
+      },
+      "extra": {
+        "img": "https://bafybeieippd3molejzahaclhbqeps2mren2gzbwcnbikrmc2ib3miozt4u.ipfs.nftstorage.link/5654.png?ext=png"
+      },
+      "expiry": -1,
+      "token": {
+        "mintAddress": "GXzSxtMohLHmg9s22HSLQVx1A4CsLoHh4WX1m3ecqeCz",
+        "owner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
+        "supply": 1,
+        "collection": "tomorrowland_love_unity",
+        "collectionName": "Tomorrowland: The Symbol of Love and Unity",
+        "name": "The Symbol #5654",
+        "updateAuthority": "3HXMJiVfsdrPVuuVSa5cQgBFpSPN73caACinntCyJqt5",
+        "primarySaleHappened": true,
+        "sellerFeeBasisPoints": 500,
+        "image": "https://bafybeieippd3molejzahaclhbqeps2mren2gzbwcnbikrmc2ib3miozt4u.ipfs.nftstorage.link/5654.png?ext=png",
+        "animationUrl": "https://bafybeieippd3molejzahaclhbqeps2mren2gzbwcnbikrmc2ib3miozt4u.ipfs.nftstorage.link/5654.mp4",
+        "externalUrl": "https://nft.tomorrowland.com",
+        "attributes": [
+          {
+            "trait_type": "Background",
+            "value": "Amethyst Purple"
+          },
+          {
+            "trait_type": "Base",
+            "value": "Pure Gold"
+          },
+          {
+            "trait_type": "Creature",
+            "value": "Orbs Yellow"
+          },
+          {
+            "trait_type": "Device",
+            "value": "Hooks"
+          },
+          {
+            "trait_type": "Effect",
+            "value": "No Effect"
+          },
+          {
+            "trait_type": "Icon",
+            "value": "Full Silver"
+          },
+          {
+            "trait_type": "Platform",
+            "value": "Black Metal "
+          },
+          {
+            "trait_type": "Text Ornament",
+            "value": "Ribbon Red"
+          },
+          {
+            "trait_type": "Text Ring",
+            "value": "No Text"
+          }
+        ],
+        "properties": {
+          "files": [
+            {
+              "uri": "https://bafybeieippd3molejzahaclhbqeps2mren2gzbwcnbikrmc2ib3miozt4u.ipfs.nftstorage.link/5654.png?ext=png",
+              "type": "image/png"
+            },
+            {
+              "uri": "https://bafybeieippd3molejzahaclhbqeps2mren2gzbwcnbikrmc2ib3miozt4u.ipfs.nftstorage.link/5654.mp4?ext=mp4",
+              "type": "video/mp4"
+            }
+          ],
+          "category": "video",
+          "creators": [
+            {
+              "share": 100,
+              "address": "HHm1oxxi2P7YoLVGuEvGv9sVUTZamZJycWNMRHjDJzbG"
+            }
+          ]
+        },
+        "price": 2.03772,
+        "listStatus": "listed",
+        "tokenAddress": "GqTLqAPjkcG1jQtERm5kbu8uAENSWrhGsS7Xc22htUHg",
+        "priceInfo": {
+          "solPrice": {
+            "rawAmount": "2037720000",
+            "address": "So11111111111111111111111111111111111111112",
+            "decimals": 9
+          }
+        }
+      },
+      "listingSource": "M2"
+    },
+    "pool": {
+      "spotPrice": 1851700000,
+      "curveType": "linear",
+      "curveDelta": 0,
+      "reinvestFulfillBuy": false,
+      "reinvestFulfillSell": false,
+      "expiry": 1821954634,
+      "lpFeeBp": 0,
+      "buysideCreatorRoyaltyBp": 0,
+      "poolOwner": "7Zn3pxZJFfcCEH4kKab128HB2Vxsp8yv1eqiGCVFn4yX",
+      "sellsideAssetAmount": 0,
+      "buysidePaymentAmount": 1875500000,
+      "buyOrdersAmount": 1,
+      "collectionSymbol": "tomorrowland_love_unity",
+      "collectionName": "Tomorrowland: The Symbol of Love and Unity",
+      "poolType": "buy_sided",
+      "updatedAt": "2026-10-05T15:07:31.849Z",
+      "uuid": "G2Bt7JbB21NNsvH3EFUciKWCE2Zu2PwW6UvAKV5MBTmb",
+      "poolKey": "6Fb7tyjLVBNPbua7M2wD2SPdv7fSfqQTE5wKATb9wxfg",
+      "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
+      "mints": [],
+      "collectionSellerFeeBasisPoints": 500,
+      "lpFeeEarned": 0,
+      "isMIP1": false,
+      "isOCP": false
+    }
+  }
+]
