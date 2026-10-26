@@ -1,22 +1,22 @@
 {
   "results": [
     {
-      "spotPrice": 2059800000,
+      "spotPrice": 2000200000,
       "curveType": "linear",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1824468137,
+      "expiry": 1824560921,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
       "sellsideAssetAmount": 0,
-      "buysidePaymentAmount": 102206085017,
+      "buysidePaymentAmount": 83680171017,
       "buyOrdersAmount": 1,
       "collectionSymbol": "tomorrowland_love_unity",
       "collectionName": "Tomorrowland: The Symbol of Love and Unity",
       "poolType": "buy_sided",
-      "updatedAt": "2026-10-25T12:42:18.360Z",
+      "updatedAt": "2026-10-26T14:28:42.808Z",
       "uuid": "XChNRFV4iqmgTVb8y1RfxBGy5wghP8Sst6MgVJpUKo8",
       "poolKey": "3rtxQiZMKVtkoJffr5LJt8PRjV711P4UBidKFGGWtXh3",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -28,11 +28,11 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "FGqgzKNL9waGX4e5kqcrmiLBFu6AXVx621WTT6KJQMvw",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 2059800000
+        "sharedEscrowBuysidePaymentAmount": 2000200000
       }
     },
     {
-      "spotPrice": 2058800000,
+      "spotPrice": 1999200000,
       "curveType": "linear",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
@@ -47,7 +47,7 @@
       "collectionSymbol": "tomorrowland_love_unity",
       "collectionName": "Tomorrowland: The Symbol of Love and Unity",
       "poolType": "buy_sided",
-      "updatedAt": "2026-10-25T12:42:17.704Z",
+      "updatedAt": "2026-10-26T14:28:42.094Z",
       "uuid": "7yZLRuzoFshc9AKPgqg282yYgMZ6MG9C8esPviTxbbia",
       "poolKey": "5wEgjaFVES2JJ1R3r5J9Ztt8RqBYRorjSENy4b8ymUE",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -59,7 +59,7 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "6ixkWCHjfe1gU3bfsg22SnmicrYYKuYruhCFStaabVDJ",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 2058800000
+        "sharedEscrowBuysidePaymentAmount": 1999200000
       }
     },
     {
@@ -97,17 +97,17 @@
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1821869402,
+      "expiry": 1821968010,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "9taD9QshRxnMzsPcnYpcamu66pwQurfyQ29tbkZVdrS6",
       "sellsideAssetAmount": 0,
-      "buysidePaymentAmount": 45726860991,
+      "buysidePaymentAmount": 51679841434,
       "buyOrdersAmount": 1,
       "collectionSymbol": "tomorrowland_love_unity",
       "collectionName": "Tomorrowland: The Symbol of Love and Unity",
       "poolType": "buy_sided",
-      "updatedAt": "2026-10-25T10:50:04.550Z",
+      "updatedAt": "2026-10-26T14:13:34.189Z",
       "uuid": "CXTGEk8qj7inNUSuXzwvTrUgpXMyynEMGUi94ieYqGip",
       "poolKey": "BNZYgN9wZMozHvCTL2BrcYdPGpk33xC4FBDqUNPrEPC9",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
