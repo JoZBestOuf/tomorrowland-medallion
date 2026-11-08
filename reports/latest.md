@@ -1,44 +1,44 @@
 # Relevé Tomorrowland — Medallion of Memoria
 
-Date : **07/11/2026 à 15:17:22 Europe/Paris**
+Date : **08/11/2026 à 15:27:31 Europe/Paris**
 
-Cours SOL/EUR : **80,68 €** — source : Kraken — dernière transaction SOLEUR
+Cours SOL/EUR : **79,91 €** — source : Kraken — dernière transaction SOLEUR
 
 ## A Letter from the Universe
 
-- Achat immédiat : **52,9800 SOL** / **4 274,43 €**
-- Revente immédiate : **50,1142 SOL** / **4 043,21 €**
-- Spread : **-2,8658 SOL** / **-231,21 €** / **-5,41 %**
-- Quote-part achat : **71,52 %**
-- Quote-part revente : **70,71 %**
-- Variation achat : **1,81 %**
-- Variation revente : **-0,04 %**
+- Achat immédiat : **52,9899 SOL** / **4 234,42 €**
+- Revente immédiate : **50,2000 SOL** / **4 011,48 €**
+- Spread : **-2,7899 SOL** / **-222,94 €** / **-5,26 %**
+- Quote-part achat : **70,99 %**
+- Quote-part revente : **70,74 %**
+- Variation achat : **0,02 %**
+- Variation revente : **0,17 %**
 
 ## The Reflection of Love
 
-- Achat immédiat : **18,9456 SOL** / **1 528,53 €**
-- Revente immédiate : **18,7530 SOL** / **1 512,99 €**
-- Spread : **-0,1926 SOL** / **-15,54 €** / **-1,02 %**
-- Quote-part achat : **25,58 %**
-- Quote-part revente : **26,46 %**
-- Variation achat : **-0,22 %**
+- Achat immédiat : **19,5000 SOL** / **1 558,24 €**
+- Revente immédiate : **18,7530 SOL** / **1 498,55 €**
+- Spread : **-0,7470 SOL** / **-59,69 €** / **-3,83 %**
+- Quote-part achat : **26,13 %**
+- Quote-part revente : **26,43 %**
+- Variation achat : **2,93 %**
 - Variation revente : **0,00 %**
 
 ## The Symbol of Love and Unity
 
-- Achat immédiat : **2,1499 SOL** / **173,45 €**
-- Revente immédiate : **2,0050 SOL** / **161,76 €**
-- Spread : **-0,1449 SOL** / **-11,69 €** / **-6,74 %**
-- Quote-part achat : **2,90 %**
+- Achat immédiat : **2,1499 SOL** / **171,80 €**
+- Revente immédiate : **2,0092 SOL** / **160,56 €**
+- Spread : **-0,1407 SOL** / **-11,24 €** / **-6,54 %**
+- Quote-part achat : **2,88 %**
 - Quote-part revente : **2,83 %**
 - Variation achat : **0,00 %**
-- Variation revente : **0,00 %**
+- Variation revente : **0,21 %**
 
 ## Medallion complet
 
-- Coût total d’achat : **74,0755 SOL** / **5 976,41 €**
-- Valeur totale de revente : **70,8722 SOL** / **5 717,97 €**
-- Spread total : **-3,2033 SOL** / **-258,44 €** / **-4,32 %**
+- Coût total d’achat : **74,6398 SOL** / **5 964,47 €**
+- Valeur totale de revente : **70,9622 SOL** / **5 670,59 €**
+- Spread total : **-3,6776 SOL** / **-293,88 €** / **-4,93 %**
 
 ## Conclusion
 

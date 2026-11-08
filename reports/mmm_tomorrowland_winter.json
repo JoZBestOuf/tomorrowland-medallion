@@ -1,22 +1,22 @@
 {
   "results": [
     {
-      "spotPrice": 50114200000,
+      "spotPrice": 50200000000,
       "curveType": "linear",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1825596808,
+      "expiry": 1825683281,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
       "sellsideAssetAmount": 0,
-      "buysidePaymentAmount": 103841003015,
+      "buysidePaymentAmount": 92685643015,
       "buyOrdersAmount": 1,
       "collectionSymbol": "tomorrowland_winter",
       "collectionName": "Tomorrowland: A Letter from the Universe",
       "poolType": "buy_sided",
-      "updatedAt": "2026-11-07T14:13:29.393Z",
+      "updatedAt": "2026-11-08T14:14:42.515Z",
       "uuid": "BcVUu6nrEKGA9StZu4BuB1YUb1Ph36YAxzWCNoypNbZA",
       "poolKey": "AtmvaEZWba3Q1Xyz82S7HYZBkUx3ecMdyYYKXDZVTBaZ",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -28,16 +28,16 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "FGqgzKNL9waGX4e5kqcrmiLBFu6AXVx621WTT6KJQMvw",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 50114200000
+        "sharedEscrowBuysidePaymentAmount": 50200000000
       }
     },
     {
-      "spotPrice": 50113200000,
+      "spotPrice": 50199000000,
       "curveType": "exp",
       "curveDelta": 0,
       "reinvestFulfillBuy": false,
       "reinvestFulfillSell": false,
-      "expiry": 1823004806,
+      "expiry": 1823091279,
       "lpFeeBp": 0,
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "FB4kst8PvpvbRaUViEXfBnYEQTsqVNrr578Q9TuXJJcm",
@@ -47,7 +47,7 @@
       "collectionSymbol": "tomorrowland_winter",
       "collectionName": "Tomorrowland: A Letter from the Universe",
       "poolType": "buy_sided",
-      "updatedAt": "2026-11-07T14:13:28.850Z",
+      "updatedAt": "2026-11-08T14:14:41.777Z",
       "uuid": "Gd37vHLRLzZ9gzY6C8RcJUtDinjuMZGj4Kucz2ub8Cst",
       "poolKey": "AK7hD4QthAB2mVD5g4fdocefctPrH45vCvRb2S6VJxHD",
       "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
@@ -59,7 +59,7 @@
       "sharedEscrowInfo": {
         "sharedEscrowAddress": "GM18Z7xvt8ogo2QzqsotTa6EW1t8rwcsZn2Ev7uvddw5",
         "sharedEscrowCount": 1,
-        "sharedEscrowBuysidePaymentAmount": 50113200000
+        "sharedEscrowBuysidePaymentAmount": 50199000000
       }
     },
     {
@@ -213,7 +213,7 @@
       "buysideCreatorRoyaltyBp": 0,
       "poolOwner": "EVquz5tTB2wPZDPACSXb69ytsZY26VWZ12kg4Vq1uert",
       "sellsideAssetAmount": 0,
-      "buysidePaymentAmount": 103841003015,
+      "buysidePaymentAmount": 92685643015,
       "buyOrdersAmount": 1,
       "collectionSymbol": "tomorrowland_winter",
       "collectionName": "Tomorrowland: A Letter from the Universe",
@@ -315,6 +315,37 @@
       "lpFeeEarned": 0,
       "isMIP1": false,
       "isOCP": false
+    },
+    {
+      "spotPrice": 31523100000,
+      "curveType": "exp",
+      "curveDelta": 0,
+      "reinvestFulfillBuy": false,
+      "reinvestFulfillSell": false,
+      "expiry": 1815332940,
+      "lpFeeBp": 0,
+      "buysideCreatorRoyaltyBp": 10000,
+      "poolOwner": "FeN4uvKijFQJPsFwUm6yb4n9pBiZqkCozQq3ppFR2KAJ",
+      "sellsideAssetAmount": 0,
+      "buysidePaymentAmount": 31982550000,
+      "buyOrdersAmount": 1,
+      "collectionSymbol": "tomorrowland_winter",
+      "collectionName": "Tomorrowland: A Letter from the Universe",
+      "poolType": "buy_sided",
+      "updatedAt": "2026-09-24T19:33:30.236Z",
+      "uuid": "7oV4sh8udmvZiob4jDQpsdgCxuV4MfwTPC29veMkvz4e",
+      "poolKey": "AhvYmz5qgbdi8aCZP5Js7u2PdJ57RSrKBiGrawBK8ZdN",
+      "cosigner": "NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd",
+      "mints": [],
+      "collectionSellerFeeBasisPoints": 500,
+      "lpFeeEarned": 0,
+      "isMIP1": false,
+      "isOCP": false,
+      "sharedEscrowInfo": {
+        "sharedEscrowAddress": "ANgaskj244pjnWpm2ZtChhytpR46qY2BLB3iCP1fLSYP",
+        "sharedEscrowCount": 1,
+        "sharedEscrowBuysidePaymentAmount": 31523100000
+      }
     },
     {
       "spotPrice": 31500000000,
@@ -431,7 +462,7 @@
       "buysideCreatorRoyaltyBp": 10000,
       "poolOwner": "7i9GwrAdwgUbboUB43BhMCQ1tHBqJp7VV4Z8kXgEq3bc",
       "sellsideAssetAmount": 0,
-      "buysidePaymentAmount": 12667550000,
+      "buysidePaymentAmount": 12501550000,
       "buyOrdersAmount": 1,
       "collectionSymbol": "tomorrowland_winter",
       "collectionName": "Tomorrowland: A Letter from the Universe",
